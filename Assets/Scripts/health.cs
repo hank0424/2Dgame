@@ -1,70 +1,75 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class health : MonoBehaviour
 {
-    [SerializeField] private Image total_health;
-    [SerializeField] private Image current_health;
-    [SerializeField] private Image total_mana;
+    public static float max=0.5f;
+    [Header("UI 元件")]
+    public static float h1 = 0.5f;
+    public static float m1 = 0.5f;
+    [SerializeField] public  Image total_health;   // 背景條
+    [SerializeField] private Image current_health; // 現在的血條
+    [SerializeField] public  Image total_mana;
     [SerializeField] private Image current_mana;
-    public static float HP = 5f;
-    public static float mana = 4f;
-    public static float MAXmana = 4f;
 
-    private float manaRegenerationInterval = 4f; // 每次增加1点魔法的时间间隔
-    private bool isRegeneratingMana = false;
+    [Header("角色數值")]
+    public static float maxHp = 5f;   // 初始最大血量 = 5格
+    public static float HP = 5f;      // 當前血量 = 5格
+    public static float maxMana = 4f; // 初始最大魔力 = 5格
+    public static float mana = 4f;    // 當前魔力 = 5格
 
-    // Start is called before the first frame update
+    private float manaRegenInterval = 4f;
+    private bool isRegen = false;
+
     void Start()
     {
-        total_health.fillAmount = HP / 10f;
-        current_health.fillAmount = HP / 10f;
-        total_mana.fillAmount = mana / 8f;
-        current_mana.fillAmount = mana / 8f;
+        UpdateUI();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        print(mana);
-        print(current_mana.fillAmount);
 
-        // 检查生命值是否小于等于0，如果是，重置为5
-        if (HP <= 0)
+        if(HP>maxHp)
         {
-            HP = 5;
+            HP = maxHp;
         }
-
-        // 按下L键时减少生命值
+        
+        // 測試按鍵：L 減血，K 加血
         if (Input.GetKeyDown(KeyCode.L))
-        {
             HP -= 1;
-        }
+        if (Input.GetKeyDown(KeyCode.K))
+            HP += 1;
 
-        // 更新生命值和魔法值的UI显示
-        current_health.fillAmount = HP / 10f; // 10为最大生命值
-        current_mana.fillAmount = mana / 8f; // 8为最大魔法值
+        UpdateUI();
 
-        // 检查是否需要开始魔法值恢复
-        if (current_mana.fillAmount < total_mana.fillAmount && !isRegeneratingMana)
-        {
-            StartCoroutine(RegenerateMana());
-        }
+        if (mana < maxMana && !isRegen)
+            StartCoroutine(RegenMana());
+      
+      
     }
 
-    // 魔法值恢复协程
-    private IEnumerator RegenerateMana()
+    // 更新UI顯示
+    public void UpdateUI()
     {
-        isRegeneratingMana = true;
-        while (mana < MAXmana)
+        current_health.fillAmount = HP / 10f;
+        current_mana.fillAmount = mana / 8f;
+
+        // 這裡假設 total_health / total_mana 是固定背景，永遠滿格
+        total_health.fillAmount = h1;
+        total_mana.fillAmount = m1;
+    }
+
+    private IEnumerator RegenMana()
+    {
+        isRegen = true;
+        while (mana < maxMana)
         {
-            yield return new WaitForSeconds(manaRegenerationInterval);
+            yield return new WaitForSeconds(manaRegenInterval);
             mana += 1f;
-            mana = Mathf.Clamp(mana, 0f, 8f); // 确保mana不会超过8
-            current_mana.fillAmount = mana / 8f;
+            mana = Mathf.Clamp(mana, 0f, maxMana);
+            UpdateUI();
         }
-        isRegeneratingMana = false;
+        isRegen = false;
     }
 }

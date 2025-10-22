@@ -27,12 +27,12 @@ public class ShowBackpack : MonoBehaviour
             if (Backpack)
             {
                 Cursor.visible = true; // Ô@ æª¨ Û
-                Cursor.lockState = CursorLockMode.None; // Ω‚Êiª¨ Û
+               
             }
             else
             {
                 Cursor.visible = false; // Î[≤ÿª¨ Û
-                Cursor.lockState = CursorLockMode.Locked; // Êi∂®ª¨ Û
+                
             }
         }
     }

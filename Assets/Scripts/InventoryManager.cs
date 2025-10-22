@@ -7,6 +7,7 @@ public class InventoryManager : MonoBehaviour
     public InventorySlot[] inventorySlots; // 所有的背包槽位（包含素材、道具、武器等）
     public InventorySlot[] hotbarSlots;    // 快捷欄的槽位（數字鍵 1~9 可使用）
     public GameObject inventoryItemPrefab; // 用來生成 UI 物品的 prefab
+    public int backpackLV = 0;
 
     private void Update()
     {
@@ -146,6 +147,22 @@ public class InventoryManager : MonoBehaviour
         Debug.Log($"生成新物品：{item.itemName}，數量：{inventoryItem.count}，槽位：{slot.gameObject.name}");
     }
 
+    public int GetItemCount(Item targetItem)
+    {
+        int totalCount = 0;
+
+        foreach (var slot in inventorySlots)
+        {
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null && itemInSlot.item == targetItem)
+            {
+                totalCount += itemInSlot.count;
+            }
+        }
+
+        return totalCount;
+    }
+
     /// <summary>
     /// 消耗指定數量的物品
     /// </summary>
@@ -203,32 +220,65 @@ public class InventoryManager : MonoBehaviour
     /// <summary>
     /// 解鎖背包槽位（每種類型解鎖指定數量）
     /// </summary>
-    public void UnlockSlot(int countPerType)
+    public void UnlockSlot(int backpackLevel)
     {
-        int openedForMaterial = 0;
-        int openedForItem = 0;
+        int materialNum = 0, itemNum = 0, skillNum = 0;
+
+        switch (backpackLevel)
+        {
+            case 0:
+                materialNum = 1;
+                itemNum = 0;
+                skillNum = 0;
+                break;
+            case 1:
+                materialNum = 1;
+                itemNum = 0;
+                skillNum = 0;
+                break;
+            case 2:
+                materialNum = 2;
+                itemNum = 1;
+                skillNum = 1;
+                break;
+            case 3:
+                materialNum = 2;
+                itemNum = 1;
+                skillNum = 1;
+                break;
+            case 4:
+                materialNum = 2;
+                itemNum = 1;
+                skillNum = 1;
+                break;
+        }
+
+        int openedMaterial = 0, openedItem = 0, openedSkill = 0;
 
         foreach (var slot in inventorySlots)
         {
-            if (!slot.isOpened)
-            {
-                if (slot.allowedItemType == ItemType.素材 && openedForMaterial < countPerType)
-                {
-                    slot.isOpened = true;
-                    openedForMaterial++;
-                    Debug.Log($"解鎖了一個素材槽：{slot.gameObject.name}");
-                }
-                else if (slot.allowedItemType == ItemType.道具 && openedForItem < countPerType)
-                {
-                    slot.isOpened = true;
-                    openedForItem++;
-                    Debug.Log($"解鎖了一個道具槽：{slot.gameObject.name}");
-                }
+            if (slot.isOpened) continue;
 
-                // 如果兩種類型都解鎖夠數量就跳出
-                if (openedForMaterial >= countPerType && openedForItem >= countPerType)
-                    break;
+            if (slot.allowedItemType == ItemType.素材 && openedMaterial < materialNum)
+            {
+                slot.isOpened = true;
+                openedMaterial++;
             }
+            else if (slot.allowedItemType == ItemType.道具 && openedItem < itemNum)
+            {
+                slot.isOpened = true;
+                openedItem++;
+            }
+            else if (slot.allowedItemType == ItemType.技能 && openedSkill < skillNum)
+            {
+                slot.isOpened = true;
+                openedSkill++;
+            }
+
+            if (openedMaterial >= materialNum &&
+                openedItem >= itemNum &&
+                openedSkill >= skillNum)
+                break;
         }
     }
 }
