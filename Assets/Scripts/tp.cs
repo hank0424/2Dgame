@@ -38,6 +38,11 @@ public class tp : MonoBehaviour
         player.transform.position = new Vector3(40f, 27.3f, 0);
         ui.SetActive(false);
     }
+    public void dungeon2f()
+    {
+        player.transform.position = new Vector3(101.6f, 40, 0);
+        ui.SetActive(false);
+    }
     // Start is called before the first frame update
     void Start()
     {

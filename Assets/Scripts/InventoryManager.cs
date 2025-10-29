@@ -9,6 +9,10 @@ public class InventoryManager : MonoBehaviour
     public GameObject inventoryItemPrefab; // 用來生成 UI 物品的 prefab
     public int backpackLV = 0;
 
+    public void Start()
+    {
+        RefreshSlotActive();
+    }
     private void Update()
     {
         HandleHotbarInput(); // 每幀監聽快捷鍵輸入
@@ -63,6 +67,45 @@ public class InventoryManager : MonoBehaviour
             Debug.Log($"快捷欄 {index + 1} 沒有可用的道具！");
         }
     }
+
+    public bool CanAddItem(Item item, int amount = 1)
+    {
+        int remaining = amount;
+        // 1?? 嘗試先堆疊到已存在的同類物品
+        foreach (var slot in inventorySlots)
+        {
+            if (!slot.isOpened) continue; // 未解鎖的槽位跳過
+
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null &&
+                itemInSlot.item == item &&
+                itemInSlot.count < item.maxStack &&
+                item.stackable &&
+                slot.allowedItemType == item.type)
+            {
+                int addableCount = Mathf.Min(amount, item.maxStack - itemInSlot.count);
+                remaining -= addableCount;
+                if (remaining <= 0)
+                    return true; // 全部堆完了
+            }
+        }
+
+        // 2?? 如果還有剩餘數量 -> 嘗試放到空槽位
+        foreach (var slot in inventorySlots)
+        {
+            if (!slot.isOpened) continue;
+            if (slot.allowedItemType != item.type) continue; // 只能放允許類型的物品
+
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot == null)
+            {
+                return true;
+            }
+        }
+        Debug.Log("You don,t have a slot to pick up this item");
+        return false;
+    }
+
 
     /// <summary>
     /// 嘗試將物品加入背包
@@ -217,6 +260,16 @@ public class InventoryManager : MonoBehaviour
         return true;
     }
 
+    public void RefreshSlotActive()
+    {
+        foreach (var slot in inventorySlots)
+        {
+            if (slot == null) continue;
+            slot.gameObject.SetActive(slot.isOpened);
+        }
+    }
+
+
     /// <summary>
     /// 解鎖背包槽位（每種類型解鎖指定數量）
     /// </summary>
@@ -280,5 +333,6 @@ public class InventoryManager : MonoBehaviour
                 openedSkill >= skillNum)
                 break;
         }
+        RefreshSlotActive();
     }
 }

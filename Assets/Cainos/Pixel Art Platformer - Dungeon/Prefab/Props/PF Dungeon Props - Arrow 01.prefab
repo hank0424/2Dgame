@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 603725519513018456}
   m_Layer: 0
   m_Name: PF Dungeon Props - Arrow 01
-  m_TagString: Untagged
+  m_TagString: anibullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -18,7 +18,7 @@ public class SpawnPT : MonoBehaviour
         {
             print(spawn_active);
 
-            health.HP = 5;
+            health.HP = health.maxHp;
 
             spawn_active = 1;
         }

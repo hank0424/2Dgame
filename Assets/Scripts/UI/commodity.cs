@@ -33,8 +33,8 @@ public class commodity : MonoBehaviour
     private string bk4_name = "背包升級IV";
     private string bk_desc = "升級後提升背包容量[素材(1) 道具(1) 技能(1)]";
 
-    private string n_name = "請選擇物件";
-    private string n_desc = "點擊物件獲得相關資訊敘述";
+    private string n_name = "請選擇物品";
+    private string n_desc = "點物品圖片獲得相關資訊敘述";
 
     private string reg_name = "回復藥水";
     private string reg_desc = "使用後將HP回復至最大值(消耗品)";

@@ -87,23 +87,28 @@ public class Chara2 : MonoBehaviour
         if (health.HP <= 0 && SpawnPT.spawn_active == 0)
         {
             SceneManager.LoadScene("Basement");
-
+            health.HP = health.maxHp;
         }
         if (health.HP <= 0 && SpawnPT.spawn_active == 1)
         {
             this.gameObject.transform.position = new Vector3(12.5100002f, -25.9899998f, 0);
-
+            health.HP = health.maxHp;
 
         }
         if (health.HP <= 0 && SpawnPT.spawn_active == 2)
         {
             this.gameObject.transform.position = new Vector3(44.4599991f, -26.132f, 0);
-
+            health.HP = health.maxHp;
         }
         if (health.HP <= 0 && SpawnPT.spawn_active == 3)
         {
-            this.gameObject.transform.position = new Vector3(74.655f, 26.988f, 0);
-
+            this.gameObject.transform.position = new Vector3(74.655f, 27.988f, 0);
+            health.HP = health.maxHp;
+        }
+        if (health.HP <= 0 && SpawnPT.spawn_active == 4)
+        {
+            this.gameObject.transform.position = new Vector3(104.24f, 40.5f, 0);
+            health.HP = health.maxHp;
         }
         lastXPosition = Mathf.Lerp(lastXPosition, transform.localPosition.x, 0.3f);
         float currentXPosition = transform.localPosition.x;

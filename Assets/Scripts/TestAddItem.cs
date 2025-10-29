@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestAddItem : MonoBehaviour
 {
@@ -12,14 +13,22 @@ public class TestAddItem : MonoBehaviour
     public Item gunpowder;
     public Item spiderSilkItem;
     public Item healing;
+    public Image m1;
+    public Image m2;
+    public Image m3;
+    public Text t1;
+    public Text t2;
+    public Text t3;
 
     int lv;
 
    
     void Start()
     {
-       
-       
+
+        m1.rectTransform.anchoredPosition = new Vector2(-202f, 0);
+        m2.gameObject.SetActive(false);
+        m3.gameObject.SetActive(false);
     }
     public commodity commodity;
     /// <summary>
@@ -66,6 +75,11 @@ public class TestAddItem : MonoBehaviour
                         inventoryManager.UnlockSlot(1);
                         inventoryManager.backpackLV++;
                         commodity.bkLV +=1;
+                        t1.text = "6";
+                        t3.text = "2";
+                        m1.rectTransform.anchoredPosition = new Vector2(-322f, 0);
+                        m3.rectTransform.anchoredPosition = new Vector2(-75f, 0);
+                        m3.gameObject.SetActive(true);
                         
                     }
                     else
@@ -83,7 +97,14 @@ public class TestAddItem : MonoBehaviour
                         inventoryManager.UnlockSlot(2);
                         inventoryManager.backpackLV++;
                         commodity.bkLV += 1;
-                       
+                        t1.text = "8";
+                        t2.text = "2";
+                        t3.text = "4";
+
+                        m2.gameObject.SetActive(true);
+                        m1.rectTransform.anchoredPosition = new Vector2(-456f, 0);
+                        m2.rectTransform.anchoredPosition = new Vector2(52, 0);
+                        m3.rectTransform.anchoredPosition = new Vector2(-202, 0);
                     }
                     else
                     {
@@ -101,7 +122,10 @@ public class TestAddItem : MonoBehaviour
                         inventoryManager.UnlockSlot(3);
                         inventoryManager.backpackLV++;
                         commodity.bkLV += 1;
-                        
+                        t1.text = "10";
+                        t2.text = "4";
+                        t3.text = "6";
+                      
                     }
                     else
                     {
@@ -128,17 +152,18 @@ public class TestAddItem : MonoBehaviour
                     break;
             }
         }
-        if (commodity.currentItem=="reg")
+        if (commodity.currentItem == "reg" && inventoryManager.CanAddItem(PickUpWhatItems[2]))
         {
-            int herbNeed=3;
+            int herbNeed = 3;
             if (inventoryManager.GetItemCount(herb) >= herbNeed)
             {
                 inventoryManager.ConsumeItem(herb, 3);
-                Debug.Log("Ñu×÷³É¹¦");
+                Debug.Log("Add healing");
                 PickUpItem(2);
             }
         }
-        if(commodity.currentItem=="bomb")
+
+        if (commodity.currentItem== "bomb" && inventoryManager.CanAddItem(PickUpWhatItems[7]))
         {
             int gunpowderNeed = 3;
             if (inventoryManager.GetItemCount(gunpowder) >= gunpowderNeed)

@@ -17,7 +17,7 @@ public class SpawnPT2 : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             SpawnPT.spawn_active = 2;
-            health.HP = 5;
+            health.HP = health.maxHp;
 
 
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class atk_detect : MonoBehaviour
 {
-    public GameObject slime;
+    public GameObject monster;
     public GameObject bullet;
     public float fireInterval = 2f; // ×Ó—°lÉäég¸ô•rég
     private float timer = 0f;
@@ -13,13 +13,13 @@ public class atk_detect : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange)
+        if (playerInRange&&monster!=null)
         {
             timer += Time.deltaTime;
 
             if (timer >= fireInterval)
             {
-                Instantiate(bullet, slime.transform.position, Quaternion.identity);
+                Instantiate(bullet, monster.transform.position, Quaternion.identity);
                 timer = 0f;
             }
         }

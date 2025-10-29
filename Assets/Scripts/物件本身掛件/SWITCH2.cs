@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SWITCH2 : MonoBehaviour
 {
+    public GameObject destory;
+    public int num=0;
     private Animator a1;
     // Start is called before the first frame update
     void Start()
@@ -13,12 +15,26 @@ public class SWITCH2 : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        switch (num)
         {
-            a1.SetBool("IsOn", true);
-            
-            fire_trap.delete =true;
+            case 0:
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    a1.SetBool("IsOn", true);
+
+                    fire_trap.delete = true;
+                }
+                break;
+            case 1:
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    a1.SetBool("IsOn", true);
+
+                    destory.SetActive(false);
+                }
+                break;
         }
+       
     }
     // Update is called once per frame
     void Update()
