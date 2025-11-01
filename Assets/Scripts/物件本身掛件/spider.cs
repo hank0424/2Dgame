@@ -9,7 +9,7 @@ public class spider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(ismove==false)
+        if(ismove==false&&(collision.CompareTag("Player")))
         {
             StartCoroutine(MoveDown());
         }

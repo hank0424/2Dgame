@@ -19,4 +19,4 @@ MonoBehaviour:
   stackable: 0
   maxStack: 1
   itemName: "\u706B\u7130\u6838\u5FC3"
-  image: {fileID: 21300000, guid: 009fb53661a37884086d4559024e0b37, type: 3}
+  image: {fileID: 21300000, guid: bea1fe4fc22f02f479384806f81f4038, type: 3}

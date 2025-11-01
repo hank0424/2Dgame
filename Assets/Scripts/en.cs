@@ -10,7 +10,7 @@ public class en : MonoBehaviour
         if(hp<=0)
         {
             Destroy(this.gameObject);
-            boss.hp-=5;
+            Boss1Test.hp-=5;
         }
     }
         private void OnTriggerEnter2D(Collider2D collision)

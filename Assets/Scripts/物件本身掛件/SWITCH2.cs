@@ -5,6 +5,7 @@ using UnityEngine;
 public class SWITCH2 : MonoBehaviour
 {
     public GameObject destory;
+    
     public int num=0;
     private Animator a1;
     // Start is called before the first frame update
@@ -22,10 +23,18 @@ public class SWITCH2 : MonoBehaviour
                 {
                     a1.SetBool("IsOn", true);
 
-                    fire_trap.delete = true;
+                    destory.SetActive(false);
                 }
                 break;
             case 1:
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    a1.SetBool("IsOn", true);
+
+                    destory.SetActive(false);
+                }
+                break;
+            case 2:
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     a1.SetBool("IsOn", true);

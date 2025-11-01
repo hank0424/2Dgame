@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public int type=0;
     public int hp;
     private Animator animator;
     private float lastPosition;
     public GameObject obj;
-
+    private TestAddItem testAddItem;
     public float walkSpeed = 1.0f;
     private float moveDirection = 1.0f; // 初始方向為右邊
 
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
         lastPosition = transform.localPosition.x; // 初始化最後一次的 X 軸位置
         lastActionTime = Time.time; // 初始化最後一次行動的時間
+        testAddItem = FindObjectOfType<TestAddItem>();
     }
 
     void Update()
@@ -87,6 +89,19 @@ public class Enemy : MonoBehaviour
                 Destroy(box);
                 Destroy(this.gameObject, 0.5f);
                 animator.SetBool("died", true);
+                money.money1 += 50;
+                switch (type)
+                {
+                    case 0:
+                        testAddItem.PickUpItem(0);
+                        break;
+                    case 1:
+                        testAddItem.PickUpItem(5);
+                        break;
+                    case 2:
+                        testAddItem.PickUpItem(6);
+                        break;
+                }
             }
         }
     }

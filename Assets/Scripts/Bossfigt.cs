@@ -32,7 +32,7 @@ public class BossFight : MonoBehaviour
         HpBar();
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            boss.hp -= 1; // 访问 BossScript 中的静态变量 hp
+            Boss1Test.hp -= 1; // 访问 BossScript 中的静态变量 hp
         }
     }
 
@@ -47,7 +47,7 @@ public class BossFight : MonoBehaviour
             B.enabled = false;
         }
         // 确保 BossScript.hp 不超过范围
-        F.fillAmount = Mathf.Clamp01(boss.hp / 50f); // 假设最大 HP 是 50
+        F.fillAmount = Mathf.Clamp01(Boss1Test.hp / 50f); // 假设最大 HP 是 50
 
         if (update != null)
         {
