@@ -15,6 +15,9 @@ public class commodity : MonoBehaviour
     public Text name;
     public static int bkLV = 0;
     public static string currentItem = "";
+    private TestAddItem testAddItem;
+    private InventoryManager inventoryManager;
+
 
     //-------------------------
     // 商品資料
@@ -42,10 +45,30 @@ public class commodity : MonoBehaviour
     private string bomb_name = "炸彈";
     private string bomb_desc = "使用後對範圍內的所有單位造成傷害(消耗品)";
 
+    private string leather_name = "皮革";
+    private string leather_desc = "從野生動物身上獲取的生皮,用於升級背包的素材";
+
+    private string slime_name = "史萊姆黏液";
+    private string slime_desc = "從史萊姆提取的特殊黏液,用於升級背包的素材";
+
+    private string needle_name = "線";
+    private string needle_desc = "從蜘蛛身上獲取的絲線,用於升級背包的素材";
+
+    private string herb_name = "藥草";
+    private string herb_desc = "氣味讓人精神氣爽的草藥,用於製作回復藥水的素材";
+
+    private string gunpowder_name = "火藥";
+    private string gunpowder_desc = "易燃的黑色粉末,用於製作炸彈的素材";
+
+    private string iron_name = "鐵錠";
+    private string iron_desc = "品質優良的金屬,用於強化武器的素材";
+
     // Start is called before the first frame update
     void Start()
     {
         SelectItem("none");
+        testAddItem = FindObjectOfType<TestAddItem>();
+        inventoryManager = FindObjectOfType<InventoryManager>();
     }
 
     // Update is called once per frame
@@ -128,6 +151,36 @@ public class commodity : MonoBehaviour
                 scribe.text = bomb_desc;
                 name.color = new Color32(128, 128, 128, 255);
                 break;
+            case "leather":
+                name.text = leather_name;
+                scribe.text = leather_desc;
+                name.color = new Color32(213, 116, 87, 255);
+                break;
+            case "slime":
+                name.text = slime_name;
+                scribe.text = slime_desc;
+                name.color = new Color32(130, 201, 126, 255);
+                break;
+            case "needle":
+                name.text = needle_name;
+                scribe.text = needle_desc;
+                name.color = new Color32(255, 255, 255, 255);
+                break;
+            case "herb":
+                name.text = herb_name;
+                scribe.text = herb_desc;
+                name.color = new Color32(141, 255, 61, 255);
+                break;
+            case "gunpowder":
+                name.text = gunpowder_name;
+                scribe.text = gunpowder_desc;
+                name.color = new Color32(128, 128, 128, 255);
+                break;
+            case "iron":
+                name.text = iron_name;
+                scribe.text = iron_desc;
+                name.color = new Color32(249, 227, 255, 255);
+                break;
         }
     }
 
@@ -147,6 +200,18 @@ public class commodity : MonoBehaviour
                 break;
             case "sp":
                 break;
+            case "leather":
+                break;
+            case "slime":
+                break;
+            case "needle":
+                break;
+            case "herb":
+                break;
+            case "gunpowder":
+                break;
+            case "iron":
+                break;
         }
     }
 
@@ -156,6 +221,12 @@ public class commodity : MonoBehaviour
     public void bk() { SelectItem("bk"); }
     public void reg() { SelectItem("reg"); }
     public void bomb() { SelectItem("bomb"); }
+    public void leather() { SelectItem("leather"); }
+    public void slime() { SelectItem("slime"); }
+    public void needle() { SelectItem("needle"); }
+    public void herb() { SelectItem("herb"); }
+    public void gunpowder() { SelectItem("gunpowder"); }
+    public void iron() { SelectItem("iron"); }
 
     public void buy()
     {
@@ -195,6 +266,49 @@ public class commodity : MonoBehaviour
                     health.h1 += 0.1f;
                     health.m1 += 0.125f;
                     health.max += 0.1f;
+                }
+                break;
+            case "皮革":
+                if (money.money1 >=20 && inventoryManager.CanAddItem(testAddItem.PickUpWhatItems[0]))
+                {               
+                    money.money1 -= 20;
+                    testAddItem.PickUpItem(0);
+
+                }
+                break;
+            case "藥草":
+                if (money.money1 >= 50 && inventoryManager.CanAddItem(testAddItem.PickUpWhatItems[4]))
+                {
+                    money.money1 -= 50;
+                    testAddItem.PickUpItem(4);
+                }
+                break;
+            case "史萊姆黏液":
+                if (money.money1 >= 50 && inventoryManager.CanAddItem(testAddItem.PickUpWhatItems[6]))
+                {
+                    money.money1 -= 50;
+                    testAddItem.PickUpItem(6);
+                }
+                break;
+            case "線":
+                if (money.money1 >= 50 && inventoryManager.CanAddItem(testAddItem.PickUpWhatItems[5]))
+                {
+                    money.money1 -= 50;
+                    testAddItem.PickUpItem(5);
+                }
+                break;
+            case "火藥":
+                if (money.money1 >= 50 && inventoryManager.CanAddItem(testAddItem.PickUpWhatItems[8]))
+                {
+                    money.money1 -= 50;
+                    testAddItem.PickUpItem(8);
+                }
+                break;
+            case "鐵錠":
+                if (money.money1 >= 100 && inventoryManager.CanAddItem(testAddItem.PickUpWhatItems[1]))
+                {
+                    money.money1 -= 100;
+                    testAddItem.PickUpItem(1);
                 }
                 break;
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int type=0;
+   
     public int hp;
     private Animator animator;
     private float lastPosition;
@@ -35,7 +36,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-
+        
         rotate();
 
 
@@ -74,6 +75,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("atk"))
         {
+            animator.SetTrigger("hit");
 
             hp -= Chara2.atk;
 
@@ -117,7 +119,7 @@ public class Enemy : MonoBehaviour
             // 狦 hp タ冀笆礶
             if (hp > 0)
             {
-                StartCoroutine(ResetHitAnimation());
+                animator.SetTrigger("hit");
             }
 
             if (hp <= 0)
@@ -133,13 +135,11 @@ public class Enemy : MonoBehaviour
     
     IEnumerator ResetHitAnimation()
     {
-        // 砞﹚ hit 把计 true秨﹍冀 hit 笆礶
-        animator.SetBool("hit", true);
+       
 
-        // 单0.05
         yield return new WaitForSeconds(0.05f);
 
-        // 砞﹚ hit 把计 false
+       
         animator.SetBool("hit", false);
     }
 

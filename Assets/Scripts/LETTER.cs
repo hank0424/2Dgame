@@ -34,7 +34,7 @@ public class LETTER : MonoBehaviour
         Chara2.moveSpeed = 2f;
         Chara2.jumpForce = 1;
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow)&&collision.CompareTag("Player"))
         {
             Chara2.animator.SetInteger("walk", 1);
             target.transform.Translate(Vector3.up *4* Time.deltaTime);
@@ -42,7 +42,7 @@ public class LETTER : MonoBehaviour
         }
              
 
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow) && collision.CompareTag("Player"))
         {
             Chara2.animator.SetInteger("walk", 1);
             target.transform.Translate(Vector3.down *4* Time.deltaTime);

@@ -7,22 +7,30 @@ public class trap_door : MonoBehaviour
     public Collider2D col;
     public Animator animator;
     public GameObject door;
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        animator.SetBool("IsOpened",false);
-        col.isTrigger = false;
+        if(collision.CompareTag("Player"))
+        {
+            animator.SetBool("IsOpened", false);
+            col.isTrigger = false;
+
+        }
+      
         
     }
     private void Start()
     {
-      
-     
+       
+
     }
-    private void Update()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if(health.HP<=0)
+        if (collision.CompareTag("Player"))
         {
+            animator.SetBool("IsOpened", true);
             col.isTrigger = true;
         }
+
+          
     }
 }

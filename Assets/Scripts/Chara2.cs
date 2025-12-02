@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Chara2 : MonoBehaviour
 {
-
+    
     public static float moveSpeed = 4f;
     public static float jumpForce = 4f;
     public static int remainingJumps = 2;
@@ -34,10 +34,13 @@ public class Chara2 : MonoBehaviour
     public static float atkspeedRCD = 0;
     public BoxCollider2D Player;
     public BoxCollider2D atkbox;
+
+    private TestAddItem testAddItem;
     void Start()
     {
         animator = GetComponent<Animator>();
         atkbox.enabled = !atkbox.enabled;
+        
 
     }
      void OnTriggerEnter2D(Collider2D collision)

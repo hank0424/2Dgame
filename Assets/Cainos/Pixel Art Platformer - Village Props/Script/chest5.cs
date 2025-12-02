@@ -32,6 +32,14 @@ public class chest5 : MonoBehaviour
                     isopen = true;
                     testAddItem.PickUpItem(10);
                     break;
+                case 5:
+                    isopen = true;
+                    testAddItem.PickUpItem(12);
+                    break;
+                case 6:
+                    isopen = true;
+                    testAddItem.PickUpItem(13);
+                    break;
             }
 
         }

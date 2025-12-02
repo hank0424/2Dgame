@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bfd046b23e297541b5d31bfd97dc1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   hp: 10
   obj: {fileID: 2361702753795043902}
   walkSpeed: 2
@@ -189,7 +190,7 @@ Animator:
   m_GameObject: {fileID: 2361702753795043902}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d77ed3aa7f3df7d4dafa3eab521d3cf6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 94e573f84b373404895c868329ab359f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

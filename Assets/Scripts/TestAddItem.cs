@@ -50,6 +50,18 @@ public class TestAddItem : MonoBehaviour
         }
     }
 
+    void heal()
+    {
+        if(Input.GetKeyDown(KeyCode.G)&& inventoryManager.GetItemCount(healing)>=1&&health.HP!=health.maxHp)
+        {
+            inventoryManager.ConsumeItem(healing,1);
+            health.HP = health.maxHp;
+        }
+    }
+    private void Update()
+    {
+        heal();
+    }
     /// <summary>
     /// 模擬升級背包功能（需要消耗皮革）
     /// </summary>
