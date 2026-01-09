@@ -29454,8 +29454,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1746669585}
   m_HandleRect: {fileID: 1746669584}
   m_Direction: 0
-  m_Value: 1.3708849
-  m_Size: 0
+  m_Value: 1.0000035
+  m_Size: 0.8282235
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -164854,8 +164854,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.00395, y: -0.24790001, z: 0}
-    m_Extent: {x: 1.00575, y: 1.2551, z: 0}
+    m_Center: {x: -0.0014500022, y: -0.2478, z: 0}
+    m_Extent: {x: 1.0000501, y: 1.2573, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -233599,7 +233599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -193.00568, y: 41.499664}
+  m_AnchoredPosition: {x: -140.78963, y: 41.499664}
   m_SizeDelta: {x: 820.7892, y: 80}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1907169852
@@ -272135,11 +272135,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3886442600476665477, guid: 1cef6dae5d1d6414b8b3038d9bcf6cb3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40.1
+      value: -19.4
       objectReference: {fileID: 0}
     - target: {fileID: 3886442600476665477, guid: 1cef6dae5d1d6414b8b3038d9bcf6cb3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -25.3
+      value: -4.7
       objectReference: {fileID: 0}
     - target: {fileID: 3886442600476665477, guid: 1cef6dae5d1d6414b8b3038d9bcf6cb3, type: 3}
       propertyPath: m_LocalPosition.z
