@@ -18,10 +18,14 @@ public class HPSharing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        dogs1 = GameObject.Find("Boss3 ShootDog(Clone)").GetComponent<Boss3ShootDog>();
-        dogs2 = GameObject.Find("Boss3 ChargeDog(Clone)").GetComponent<Boss3ChargeDog>();
-        dogs3 = GameObject.Find("Boss3 ScopeDog(Clone)").GetComponent<Boss3ScopeDog>();
-        print(sharedHP);
+        if (dogs1&&dogs2&&dogs3!=null)
+        {
+            dogs1 = GameObject.Find("Boss3 ShootDog(Clone)").GetComponent<Boss3ShootDog>();
+            dogs2 = GameObject.Find("Boss3 ChargeDog(Clone)").GetComponent<Boss3ChargeDog>();
+            dogs3 = GameObject.Find("Boss3 ScopeDog(Clone)").GetComponent<Boss3ScopeDog>();
+            print(sharedHP);
+        }
+       
     }
 
     public void TakeDamage(int dmg)

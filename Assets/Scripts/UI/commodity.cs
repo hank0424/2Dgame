@@ -63,6 +63,28 @@ public class commodity : MonoBehaviour
     private string iron_name = "鐵錠";
     private string iron_desc = "品質優良的金屬,用於強化武器的素材";
 
+    private string atkHP_name = "攻擊吸血";
+    private string atkHP_desc = "被動技能,揮擊攻擊成功命中時有50%的機率回復1HP";
+
+    private string atkC_name = "加倍機會";
+    private string atkC_desc = "被動技能,揮擊攻擊成功命中時有50%的機率造成雙倍傷害";
+
+    private string atkMP_name = "攻擊回魔";
+    private string atkMP_desc = "被動技能,揮擊攻擊成功命中時有50%的機率回復1MP";
+
+    private string shield_name = "魔力屏障";
+    private string shield_desc = "主動技能,按下F鍵施放,消耗2MP生成阻擋*魔法攻擊力*點傷害的屏障";
+
+    private string dash_name = "空中衝刺";
+    private string dash_desc = "主動技能,於空中按下方向鍵左或右+Ctrl鍵施放,消耗1MP位移一段距離並對碰撞到的生物造成*魔法攻擊力*點傷害";
+
+    private string fire_name = "焰型直劍";
+    private string fire_desc = "物理攻擊+1,將武器附加火元素,主動技能會因此產生變化";
+
+    private string dark_name = "殞落王者之劍";
+    private string dark_desc = "物理、魔法攻擊+1,將武器附加闇元素,主動技能會因此產生變化";
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -121,21 +143,29 @@ public class commodity : MonoBehaviour
             case "none":
                 name.text = n_name;
                 scribe.text = n_desc;
+                scribe.fontSize = 22;
+                scribe.lineSpacing = 1f;
                 name.color = new Color32(255, 255, 255, 255);
                 break;
             case "str":
                 name.text = str_name;
                 scribe.text = str_desc;
+                scribe.fontSize = 22;
+                scribe.lineSpacing = 1f;
                 name.color = new Color32(245, 191, 94, 255);
                 break;
             case "mana":
                 name.text = mana_name;
                 scribe.text = mana_desc;
+                scribe.fontSize = 22;
+                scribe.lineSpacing = 1f;
                 name.color = new Color32(140, 140, 255, 255);
                 break;
             case "sp":
                 name.text = sp_name;
                 scribe.text = sp_desc;
+                scribe.fontSize = 22;
+                scribe.lineSpacing = 1f;
                 name.color = new Color32(255, 100, 150, 255);
                 break;
             case "bk":
@@ -144,42 +174,107 @@ public class commodity : MonoBehaviour
             case "reg":
                 name.text = reg_name;
                 scribe.text = reg_desc;
+                scribe.fontSize = 22;
+                scribe.lineSpacing = 1f;
                 name.color = new Color32(245, 98, 94, 255);
                 break;
             case "bomb":
                 name.text = bomb_name;
                 scribe.text = bomb_desc;
+                scribe.fontSize = 22;
+                scribe.lineSpacing = 1f;
                 name.color = new Color32(128, 128, 128, 255);
                 break;
             case "leather":
                 name.text = leather_name;
                 scribe.text = leather_desc;
+                scribe.fontSize = 22;
+                scribe.lineSpacing = 1f;
                 name.color = new Color32(213, 116, 87, 255);
                 break;
             case "slime":
                 name.text = slime_name;
                 scribe.text = slime_desc;
+                scribe.fontSize = 22;
+                scribe.lineSpacing = 1f;
                 name.color = new Color32(130, 201, 126, 255);
                 break;
             case "needle":
                 name.text = needle_name;
                 scribe.text = needle_desc;
+                scribe.fontSize = 22;
+                scribe.lineSpacing = 1f;
                 name.color = new Color32(255, 255, 255, 255);
                 break;
             case "herb":
                 name.text = herb_name;
                 scribe.text = herb_desc;
+                scribe.fontSize = 22;
+                scribe.lineSpacing = 1f;
                 name.color = new Color32(141, 255, 61, 255);
                 break;
             case "gunpowder":
                 name.text = gunpowder_name;
                 scribe.text = gunpowder_desc;
+                scribe.fontSize = 22;
+                scribe.lineSpacing = 1f;
                 name.color = new Color32(128, 128, 128, 255);
                 break;
             case "iron":
                 name.text = iron_name;
                 scribe.text = iron_desc;
+                scribe.fontSize = 22;
+                scribe.lineSpacing = 1f;
                 name.color = new Color32(249, 227, 255, 255);
+                break;
+            case "passive_atkHP":
+                name.text = atkHP_name;
+                scribe.text = atkHP_desc;
+                scribe.fontSize = 22;
+                scribe.lineSpacing = 1f;
+                name.color = new Color32(255, 78, 75, 255);
+                break;
+            case "passive_atkC":
+                name.text = atkC_name;
+                scribe.text = atkC_desc;
+                scribe.fontSize = 22;
+                scribe.lineSpacing = 1f;
+                name.color = new Color32(255, 212, 82, 255);
+                break;
+            case "passive_atkMP":
+                name.text = atkMP_name;
+                scribe.text = atkMP_desc;
+                scribe.fontSize = 22;
+                scribe.lineSpacing = 1f;
+                name.color = new Color32(130, 222, 255, 255);
+                break;
+            case "shield":
+                name.text = shield_name;
+                scribe.text = shield_desc;
+                scribe.fontSize = 22;
+                scribe.lineSpacing = 1f;
+                name.color = new Color32(130, 222, 255, 255);
+                break;
+            case "dash":
+                name.text = dash_name;
+                scribe.text = dash_desc;
+                scribe.fontSize = 16;
+                scribe.lineSpacing = 1.2f;
+                name.color = new Color32(130, 222, 255, 255);
+                break;
+            case "sword1":
+                name.text = fire_name;
+                scribe.text = fire_desc;
+                scribe.fontSize = 16;
+                scribe.lineSpacing = 1.2f;
+                name.color = new Color32(255, 148, 123, 255);
+                break;
+            case "sword2":
+                name.text = dark_name;
+                scribe.text = dark_desc;
+                scribe.fontSize = 16;
+                scribe.lineSpacing = 1.2f;
+                name.color = new Color32(200, 148, 255, 255);      
                 break;
         }
     }
@@ -212,6 +307,16 @@ public class commodity : MonoBehaviour
                 break;
             case "iron":
                 break;
+            case "passive_atkHP":
+                break;
+            case "passive_atkC":
+                break;
+            case "passive_atkMP":
+                break;
+            case "shield":
+                break;
+            case "dash":
+                break;
         }
     }
 
@@ -227,6 +332,13 @@ public class commodity : MonoBehaviour
     public void herb() { SelectItem("herb"); }
     public void gunpowder() { SelectItem("gunpowder"); }
     public void iron() { SelectItem("iron"); }
+    public void passive_atkHP() { SelectItem("passive_atkHP"); }
+    public void passive_atkC() { SelectItem("passive_atkC"); }
+    public void passive_atkMP() { SelectItem("passive_atkMP"); }
+    public void shield() { SelectItem("shield"); }
+    public void dash() { SelectItem("dash"); }
+    public void sword1() { SelectItem("sword1"); }
+    public void sword2() { SelectItem("sword2"); }
 
     public void buy()
     {
@@ -309,6 +421,41 @@ public class commodity : MonoBehaviour
                 {
                     money.money1 -= 100;
                     testAddItem.PickUpItem(1);
+                }
+                break;
+            case "攻擊吸血":
+                if (money.money1 >= 50 && inventoryManager.CanAddItem(testAddItem.PickUpWhatItems[14])&&skill_list.atkHP==false)
+                {
+                    money.money1 -= 50;
+                    skill_list.atkHP = true;
+                }
+                break;
+            case "加倍機會":
+                if (money.money1 >= 50 && inventoryManager.CanAddItem(testAddItem.PickUpWhatItems[14]) && skill_list.atkC == false)
+                {
+                    money.money1 -= 50;
+                    skill_list.atkC = true;
+                }
+                break;
+            case "攻擊回魔":
+                if (money.money1 >= 50 && inventoryManager.CanAddItem(testAddItem.PickUpWhatItems[14]) && skill_list.atkMP == false)
+                {
+                    money.money1 -= 50;
+                    skill_list.atkMP = true;
+                }
+                break;
+            case "魔力屏障":
+                if (money.money1 >= 50 && inventoryManager.CanAddItem(testAddItem.PickUpWhatItems[14]) && skill_list.shield == false)
+                {
+                    money.money1 -= 50;
+                    skill_list.shield = true;
+                }
+                break;
+            case "空中衝刺":
+                if (money.money1 >= 50 && inventoryManager.CanAddItem(testAddItem.PickUpWhatItems[14]) && skill_list.dash == false)
+                {
+                    money.money1 -= 50;
+                    skill_list.dash = true;
                 }
                 break;
         }

@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     public float maxActionInterval = 5.0f;
     public float moveDistance = 1;
     public float jumpForce = 5.0f;
-
+    public GameObject showDmgPrefab;
     private bool isMoving = false; // 是否正在移動
     private float distanceMoved = 0.0f; // 已經移動的距離
      Rigidbody2D box;
@@ -75,8 +75,10 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("atk"))
         {
+            Vector3 down = new Vector3(0, -0.5f, 0);
             animator.SetTrigger("hit");
-
+            GameObject show = Instantiate(showDmgPrefab, (this.transform.position+down) + Vector3.up * 1f, Quaternion.identity);
+            show.GetComponent<ShowDmg>().SetDamage(Chara2.atk);
             hp -= Chara2.atk;
 
             // 如果 hp 為正，播放動畫
@@ -90,7 +92,7 @@ public class Enemy : MonoBehaviour
                 objbox.enabled = false;
                 Destroy(box);
                 Destroy(this.gameObject, 0.5f);
-                animator.SetBool("died", true);
+                animator.SetBool("died",true);
                 money.money1 += 50;
                 switch (type)
                 {
@@ -110,11 +112,15 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // 檢查碰到的物體是否擁有 "bullet" 的 tag
+
         if (collision.gameObject.CompareTag("bullet"))
         {
             print("-");
+            Vector3 down = new Vector3(0, -0.5f, 0);
+            GameObject show = Instantiate(showDmgPrefab, (this.transform.position + down) + Vector3.up * 1f, Quaternion.identity);
+            show.GetComponent<ShowDmg>().SetDamage(Chara2.magic);
             // 每次碰到時減少 hp
-            hp-=Chara2.magic;
+            hp -=Chara2.magic;
 
             // 如果 hp 為正，播放動畫
             if (hp > 0)
@@ -124,10 +130,23 @@ public class Enemy : MonoBehaviour
 
             if (hp <= 0)
             {
+                animator.SetBool("died", true);
                 objbox.enabled = false;
                 Destroy(box);
                 Destroy(this.gameObject,0.5f);
-                animator.SetBool("died", true);
+                money.money1 += 50;
+                switch (type)
+                {
+                    case 0:
+                        testAddItem.PickUpItem(0);
+                        break;
+                    case 1:
+                        testAddItem.PickUpItem(5);
+                        break;
+                    case 2:
+                        testAddItem.PickUpItem(6);
+                        break;
+                }
             }
         }
      

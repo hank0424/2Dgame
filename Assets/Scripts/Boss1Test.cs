@@ -15,7 +15,7 @@ public class Boss1Test : MonoBehaviour
     [Header("Prefab")]
     public GameObject bulletPrefab;
     public GameObject skllBulletPrefab;
-
+    public GameObject showDmgPrefab;
     void Start()
     {
         testAddItem = FindObjectOfType<TestAddItem>();
@@ -30,6 +30,9 @@ public class Boss1Test : MonoBehaviour
         {
             print("-");
             hp -= Chara2.magic;
+            Vector3 down = new Vector3(0, -0.5f, 0);
+            GameObject show = Instantiate(showDmgPrefab, (this.transform.position + down) + Vector3.up * 1f, Quaternion.identity);
+            show.GetComponent<ShowDmg>().SetDamage(Chara2.magic);
 
             if (hp > 0)
             {

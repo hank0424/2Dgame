@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 1
   actionType: 1
   range: {x: 5, y: 4}
-  stackable: 0
-  maxStack: 1
+  stackable: 1
+  maxStack: 6
   itemName: "\u70B8\u5F48"
   image: {fileID: 21300000, guid: 3ef217c723fede34baab6e2a17129ede, type: 3}

@@ -13,7 +13,7 @@ public class chest0 : MonoBehaviour
 
             Open();
 
-            handLight.act = true;
+            
         }
     }
 

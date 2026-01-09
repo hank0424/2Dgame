@@ -10,6 +10,7 @@ public class SHOP_UI : MonoBehaviour
     
     public GameObject ShopUI;
     
+
     private void Start()
     {
         ShopUI.SetActive(false);
@@ -29,6 +30,14 @@ public class SHOP_UI : MonoBehaviour
             ShopUI.SetActive(false);
             Cursor.visible = false;
         }
+    }
+    public void Nextpage()
+    {
+       ShopUI.SetActive(true);
+    }
+    public void closepage()
+    {
+        ShopUI.SetActive(false);
     }
     public void buy()
     {

@@ -100,6 +100,9 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (pointerEventData.button == PointerEventData.InputButton.Right)
         {
+            if (item.type == ItemType.關鍵道具 || item.type == ItemType.技能 || item.type == ItemType.武器)
+                return;
+
             if (currentSlot != null)
             {
                 currentSlot.ClearSlot(); // 清空槽位狀態

@@ -182,6 +182,7 @@ MonoBehaviour:
   bulletSpeed: 5
   isTwoStage: 0
   RayPos: {fileID: 9154748071943005207}
+  showDmgPrefab: {fileID: 5181830577567718608, guid: bd400b87a2e323b4d893b5409ec983df, type: 3}
   bulletPrefab: {fileID: 5554691511865529247, guid: 113bf296191811e44ad13c1902ca5d6f, type: 3}
   slimePrefab: {fileID: 8626879424418528139, guid: 1d2950421ec1438439138b72bb8701a7, type: 3}
   deleteGround: {fileID: 0}

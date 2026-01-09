@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class en : MonoBehaviour
 {
+    public GameObject showDmgPrefab;
     public int hp=5;
     void Update()
     {
@@ -17,7 +18,9 @@ public class en : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("atk"))
         {
-
+            Vector3 down = new Vector3(0, -0.5f, 0);
+            GameObject show = Instantiate(showDmgPrefab, (this.transform.position + down) + Vector3.up * 1f, Quaternion.identity);
+            show.GetComponent<ShowDmg>().SetDamage(Chara2.atk);
             hp -= Chara2.atk;
         }
     }
@@ -26,7 +29,9 @@ public class en : MonoBehaviour
         // 檢查碰到的物體是否擁有 "bullet" 的 tag
         if (collision.gameObject.CompareTag("bullet"))
         {
-
+            Vector3 down = new Vector3(0, -0.5f, 0);
+            GameObject show = Instantiate(showDmgPrefab, (this.transform.position + down) + Vector3.up * 1f, Quaternion.identity);
+            show.GetComponent<ShowDmg>().SetDamage(Chara2.magic);
             hp -= Chara2.magic;
 
 

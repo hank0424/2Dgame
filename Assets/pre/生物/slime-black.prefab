@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2361702753795043902}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.21, y: -1.0594101, z: 0.17690659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: a4ec39b1a4fcbee4daa01335aec8ef31, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,14 +100,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bfd046b23e297541b5d31bfd97dc1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  hp: 10
+  type: 2
+  hp: 5
   obj: {fileID: 2361702753795043902}
-  walkSpeed: 2
-  minActionInterval: 2
-  maxActionInterval: 4
-  moveDistance: 2
-  jumpForce: 5
+  walkSpeed: 0
+  minActionInterval: 0
+  maxActionInterval: 0
+  moveDistance: 0
+  jumpForce: 0
+  showDmgPrefab: {fileID: 5181830577567718608, guid: bd400b87a2e323b4d893b5409ec983df, type: 3}
 --- !u!61 &8006776086131231209
 BoxCollider2D:
   m_ObjectHideFlags: 0

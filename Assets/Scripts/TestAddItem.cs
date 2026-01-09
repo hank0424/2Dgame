@@ -13,6 +13,13 @@ public class TestAddItem : MonoBehaviour
     public Item gunpowder;
     public Item spiderSilkItem;
     public Item healing;
+    public Item sword1;
+    public Item sword2;
+    public Item core1;
+    public Item core2;
+    public Item bomb;
+    
+
     public Image m1;
     public Image m2;
     public Image m3;
@@ -22,7 +29,12 @@ public class TestAddItem : MonoBehaviour
 
     int lv;
 
-   
+    bool a = false;
+    bool b = false;
+    bool c = false;
+    bool d = false;
+    bool e = false;
+    bool f = false;
     void Start()
     {
 
@@ -50,21 +62,110 @@ public class TestAddItem : MonoBehaviour
         }
     }
 
-    void heal()
-    {
-        if(Input.GetKeyDown(KeyCode.G)&& inventoryManager.GetItemCount(healing)>=1&&health.HP!=health.maxHp)
-        {
-            inventoryManager.ConsumeItem(healing,1);
-            health.HP = health.maxHp;
-        }
-    }
+   
     private void Update()
     {
-        heal();
+        changeskill();
     }
     /// <summary>
     /// 模擬升級背包功能（需要消耗皮革）
     /// </summary>
+    public void changeskill()
+    {
+
+        //fire
+        if (Chara2.fireupdate == true)
+        {
+            int skill_atk = 1;
+            int skill_magic = 1;
+            int skill_sheild = 1;
+            int skill_dash= 1;
+            if (inventoryManager.GetItemCount(PickUpWhatItems[14]) >= skill_atk)
+            {      
+                inventoryManager.ConsumeItem(PickUpWhatItems[14], 1);
+                a = true;
+                Invoke("change",0.1f);
+                Debug.Log("技能產生變化成功");
+            }
+            if (inventoryManager.GetItemCount(PickUpWhatItems[18]) >= skill_magic)
+            {
+                inventoryManager.ConsumeItem(PickUpWhatItems[18], 1);
+                b = true;
+                Invoke("change", 0.1f);
+                Debug.Log("技能產生變化成功");
+            }
+            if (inventoryManager.GetItemCount(PickUpWhatItems[21]) >= skill_sheild)
+            {
+                c = true;
+                Invoke("change", 0.1f);
+                inventoryManager.ConsumeItem(PickUpWhatItems[21], 1);
+             
+                Debug.Log("技能產生變化成功");
+            }
+
+        }
+       
+        //dark
+        if (Chara2.darkupdate == true)
+        {
+            int skill_atk = 1;
+            int skill_magic = 1;
+            int skill_sheild = 1;
+            
+            if (inventoryManager.GetItemCount(PickUpWhatItems[15]) >= skill_atk )
+            {
+                inventoryManager.ConsumeItem(PickUpWhatItems[15], 1);
+                PickUpItem(16);
+                Debug.Log("技能產生變化成功");
+            }
+            if (inventoryManager.GetItemCount(PickUpWhatItems[19]) >= skill_magic )
+            {
+                inventoryManager.ConsumeItem(PickUpWhatItems[19], 1);
+                PickUpItem(20);
+                Debug.Log("技能產生變化成功");
+            }
+            if (inventoryManager.GetItemCount(PickUpWhatItems[22]) >= skill_sheild )
+            {
+                inventoryManager.ConsumeItem(PickUpWhatItems[22], 1);
+                PickUpItem(23);
+                Debug.Log("技能產生變化成功");
+            }
+
+        }
+    }
+    public void change()
+    {
+        if (a == true)
+        {
+            PickUpItem(15);
+            a = false;
+        }
+        if (b == true)
+        {
+            PickUpItem(19);
+            b = false;
+        }
+        if (c == true)
+        {
+            PickUpItem(22);
+            c = false;
+        }
+        if (d == true)
+        {
+            PickUpItem(16);
+            d = false;
+        }
+        if (e == true)
+        {
+            PickUpItem(20);
+            e = false;
+        }
+        if (f == true)
+        {
+            PickUpItem(23);
+            f = false;
+        }
+    }
     public void UpgradeBackpack()
     {
  
@@ -183,6 +284,35 @@ public class TestAddItem : MonoBehaviour
                 inventoryManager.ConsumeItem(gunpowder, 3);
                 Debug.Log("製作成功");
                 PickUpItem(7);
+            }
+        }
+
+        if (commodity.currentItem == "sword1" && inventoryManager.CanAddItem(PickUpWhatItems[27]))
+        {
+            int coreNeed = 1;
+            int swordNeed = 1;
+            if (inventoryManager.GetItemCount(sword1) >= swordNeed&& inventoryManager.GetItemCount(core1) >= coreNeed)
+            {
+                inventoryManager.ConsumeItem(sword1,1);
+                inventoryManager.ConsumeItem(core1, 1);
+                Debug.Log("製作成功");
+                PickUpItem(27);
+                Chara2.atk += 1;
+                Chara2.fireupdate = true;
+            }
+        }
+        if (commodity.currentItem == "sword2" && inventoryManager.CanAddItem(PickUpWhatItems[28]))
+        {
+            int coreNeed = 1;
+            int swordNeed = 1;
+            if (inventoryManager.GetItemCount(sword2) >= swordNeed && inventoryManager.GetItemCount(core2) >= coreNeed)
+            {
+                inventoryManager.ConsumeItem(sword2, 1);
+                inventoryManager.ConsumeItem(core2, 1);
+                Debug.Log("製作成功");
+                PickUpItem(28);
+                Chara2.magic += 1;
+                Chara2.darkupdate = true;
             }
         }
     }

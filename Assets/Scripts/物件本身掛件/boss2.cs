@@ -13,7 +13,7 @@ public class Boss2 : MonoBehaviour
     public bool isTwoStage = false;
     public static bool clear=false;
     public GameObject RayPos;
-
+    public GameObject showDmgPrefab;
     [Header("Prefab")]
     public GameObject bulletPrefab;
     public GameObject slimePrefab;
@@ -49,6 +49,28 @@ public class Boss2 : MonoBehaviour
         {
             PushPlayerAway(collision.gameObject);
             hp -= Chara2.magic;
+            Vector3 down = new Vector3(0, -0.5f, 0);
+            GameObject show = Instantiate(showDmgPrefab, (this.transform.position + down) + Vector3.up * 1f, Quaternion.identity);
+            show.GetComponent<ShowDmg>().SetDamage(Chara2.magic);
+        }
+        if (collision.gameObject.CompareTag("bullet"))
+        {
+            Vector3 down = new Vector3(0, -0.5f, 0);
+            print("-");
+            hp -= Chara2.magic;
+
+            GameObject show = Instantiate(showDmgPrefab, (this.transform.position + down) + Vector3.up * 1f, Quaternion.identity);
+            show.GetComponent<ShowDmg>().SetDamage(Chara2.magic);
+            if (hp > 0)
+            {
+                StartCoroutine(ResetHitAnimation());
+            }
+            if (hp <= 0)
+            {
+                clear = true;
+                animator.SetBool("died", true);
+                Destroy(this.gameObject, 0.5f);
+            }
         }
     }
     void OnTriggerEnter2D(Collider2D other)
@@ -57,8 +79,10 @@ public class Boss2 : MonoBehaviour
         {
             Destroy(other.gameObject);
             print("-");
-            hp -= Chara2.magic;
-
+            hp -= Chara2.magic; 
+            Vector3 down = new Vector3(0, -0.5f, 0);
+            GameObject show = Instantiate(showDmgPrefab, (this.transform.position + down) + Vector3.up * 1f, Quaternion.identity);
+            show.GetComponent<ShowDmg>().SetDamage(Chara2.magic);
             if (hp > 0)
             {
                 StartCoroutine(ResetHitAnimation());
@@ -74,7 +98,9 @@ public class Boss2 : MonoBehaviour
         {
             print("-atk");
             hp -= Chara2.atk;
-
+            Vector3 down = new Vector3(0, -0.5f, 0);
+            GameObject show = Instantiate(showDmgPrefab, (this.transform.position + down) + Vector3.up * 1f, Quaternion.identity);
+            show.GetComponent<ShowDmg>().SetDamage(Chara2.atk);
             if (hp > 0)
             {
                 StartCoroutine(ResetHitAnimation());

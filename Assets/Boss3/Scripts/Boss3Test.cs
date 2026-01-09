@@ -7,7 +7,7 @@ public class Boss3Test : MonoBehaviour
     [Header("Basic")]
     private Animator animator;
     private Rigidbody2D rb;
-    public int hp = 76;
+    public static int hp = 80;
     public float fireDetectRange = 4f;
     public float chargeDetectRange = 6f;
     public Transform firePoint;
@@ -15,7 +15,7 @@ public class Boss3Test : MonoBehaviour
     public bool isTwoStage = false;
     private bool isAttacking = false;
     private bool isCrashCooldown = false;
-
+    public GameObject showDmgPrefab;
     [Header("Prefab")]
     public GameObject bulletPrefab;
     public GameObject[] TwoStageDogPrefab;
@@ -24,7 +24,7 @@ public class Boss3Test : MonoBehaviour
     public float pushForce = 10f;
     public float pushUpwardForce = 5f;
     public GameObject RayPos;
-
+    public static bool clear = false;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -33,6 +33,10 @@ public class Boss3Test : MonoBehaviour
 
     void Update()
     {
+        if(hp<=0)
+        {
+            clear = true;
+        }
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         CheckCrashWall();
         if (player != null)
@@ -69,10 +73,13 @@ public class Boss3Test : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PushPlayerAway(collision.gameObject);
-            hp -= Chara2.atk;
+           
         }
         if (collision.gameObject.CompareTag("bullet"))
         {
+            Vector3 down = new Vector3(0, -0.5f, 0);
+            GameObject show = Instantiate(showDmgPrefab, (this.transform.position + down) + Vector3.up * 1f, Quaternion.identity);
+            show.GetComponent<ShowDmg>().SetDamage(Chara2.magic);
             Destroy(collision.gameObject);
             print("-");
             hp -= Chara2.magic;
@@ -99,7 +106,9 @@ public class Boss3Test : MonoBehaviour
         {
             print("-");
             hp -= Chara2.atk;
-
+            Vector3 down = new Vector3(0, -0.5f, 0);
+            GameObject show = Instantiate(showDmgPrefab, (this.transform.position + down) + Vector3.up * 1f, Quaternion.identity);
+            show.GetComponent<ShowDmg>().SetDamage(Chara2.atk);
             if (hp > 0)
             {
                 StartCoroutine(ResetHitAnimation());
@@ -147,7 +156,7 @@ public class Boss3Test : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         firePoint.rotation = originalRotation;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         isAttacking = false;
     }
     IEnumerator ChargeAttack(GameObject player)

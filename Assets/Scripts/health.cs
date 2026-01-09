@@ -34,7 +34,11 @@ public class health : MonoBehaviour
         {
             HP = maxHp;
         }
-        
+        if (mana > maxMana)
+        {
+            mana = maxMana;
+        }
+
         // 測試按鍵：L 減血，K 加血
         if (Input.GetKeyDown(KeyCode.L))
             HP -= 1;

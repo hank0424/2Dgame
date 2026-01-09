@@ -94,9 +94,15 @@ public class Boss3ScopeDog : MonoBehaviour
             Debug.LogWarning("No TeleportPos found ¡ª Make sure TP points have tag Boss3TP.");
             return;
         }
+
         int index = Random.Range(0, TeleportPos.Length);
-        transform.position = TeleportPos[index].position;
+
+        Vector3 pos = TeleportPos[index].position;
+        pos.y += 0.5f;          // Y ÝS + 0.5
+
+        transform.position = pos;
     }
+
 
     void FlipTowardsPlayer(GameObject player)
     {
@@ -121,7 +127,7 @@ public class Boss3ScopeDog : MonoBehaviour
         {
             Vector3 playerPos = player.transform.position;
             WaringAreaPos.position = playerPos;
-            firePos.position = new Vector3(playerPos.x, playerPos.y - 20f, playerPos.z);
+            firePos.position = new Vector3(WaringAreaPos.position.x, WaringAreaPos.position.y - 20f, WaringAreaPos.position.z);
             Instantiate(WaringAreaPrefab, WaringAreaPos.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(2f);
             Instantiate(BulletPrefab, firePos.transform.position, Quaternion.identity);
@@ -131,7 +137,7 @@ public class Boss3ScopeDog : MonoBehaviour
         {
             Vector3 playerPos = player.transform.position;
             WaringAreaPos.position = playerPos;
-            firePos.position = new Vector3(playerPos.x, playerPos.y - 20f, playerPos.z);
+            firePos.position = new Vector3(WaringAreaPos.position.x, WaringAreaPos.position.y - 20f, WaringAreaPos.position.z);
             Instantiate(WaringAreaPrefab, WaringAreaPos.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(2f);
             Instantiate(BulletPrefab, firePos.transform.position, Quaternion.identity);
@@ -141,7 +147,7 @@ public class Boss3ScopeDog : MonoBehaviour
         {
             Vector3 playerPos = player.transform.position;
             WaringAreaPos.position = playerPos;
-            firePos.position = new Vector3(playerPos.x, playerPos.y - 20f, playerPos.z);
+            firePos.position = new Vector3(WaringAreaPos.position.x, WaringAreaPos.position.y - 20f, WaringAreaPos.position.z);
             Instantiate(WaringAreaPrefab, WaringAreaPos.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(2f);
             Instantiate(BulletPrefab, firePos.transform.position, Quaternion.identity);

@@ -8,6 +8,13 @@ public class TP_Stone : MonoBehaviour
     public GameObject stone_active;
     public GameObject ui;
     public GameObject player;
+    public int number=0;
+
+    public static bool plain=false;
+    public static bool cave= false;
+    public static bool villiage = false;
+    public static bool dungeon= false;
+    public static bool dungeon2= false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +27,24 @@ public class TP_Stone : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && !stone_active.activeSelf)
         {     
             stone_active.SetActive(true);
+            switch (number)
+            {
+                case 1:
+                    TP_stone_unlock.num = 1;
+                    break;
+                case 2:
+                    TP_stone_unlock.num = 2;
+                    break;
+                case 3:
+                    TP_stone_unlock.num = 3;
+                    break;
+                case 4:
+                    TP_stone_unlock.num = 4;
+                    break;
+                case 5:
+                    TP_stone_unlock.num = 5;
+                    break;
+            }
         }
         else if (Input.GetKeyDown(KeyCode.E) && stone_active.activeSelf)
         {

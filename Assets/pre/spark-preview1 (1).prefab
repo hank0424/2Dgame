@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2214360455341180668}
   - component: {fileID: 5588286827685694425}
   - component: {fileID: -2622645212588137436}
+  - component: {fileID: 827956682763918041}
   m_Layer: 0
   m_Name: spark-preview1 (1)
   m_TagString: bullet
@@ -166,3 +167,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.07678841, y: 0.12257138}
   m_EdgeRadius: 0
+--- !u!114 &827956682763918041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5665115654634698876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a99d48f0f7ad8b4dac9d43311ccb0d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -15,7 +15,15 @@ public class attack : MonoBehaviour
         
 
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("enemy"))
+        {
+            skill_list.passive_atkHP();
+            skill_list.passive_atkMP();
+            skill_list.passive_atkC();
+        }
+    }
     // Update is called once per frame
     void Update()
     {

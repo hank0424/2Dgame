@@ -6,7 +6,7 @@ public class spider : MonoBehaviour
 {
     public GameObject monster;
     private bool ismove=false;
-
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(ismove==false&&(collision.CompareTag("Player")))

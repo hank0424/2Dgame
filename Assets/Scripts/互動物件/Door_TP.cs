@@ -8,6 +8,7 @@ public class Door_TP : MonoBehaviour
     public Vector3 choose;
     private Vector3 Bar_Door;
     private Vector3 Bar_DoorExit;
+  
     private void Start()
     {
         Bar_Door=new Vector3(-20.1978f, 45.422f, 0);

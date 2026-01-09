@@ -6,7 +6,12 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 10f;
     private Vector2 direction;
+  
 
+    private void Start()
+    {
+     
+    }
     public void SetDirection(Vector2 newDirection)
     {
         direction = newDirection;
@@ -14,8 +19,10 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
+       
         // 將子彈移動到設定的方向
         transform.Translate(direction * speed * Time.deltaTime);
+       
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

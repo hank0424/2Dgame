@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class BossFight : MonoBehaviour
 {
+    public GameObject bossbody;
     public GameObject energy;
     public Transform pos1;
     public Transform pos2;
@@ -28,24 +29,21 @@ public class BossFight : MonoBehaviour
     }
     void Update()
     {
+        if(bossbody==null)
+        {
+            F.enabled = false;
+            M.enabled = false;
+            B.enabled = false;
+        }
         randomnum = Random.Range(1, 5);
         HpBar();
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Boss1Test.hp -= 1; // 访问 BossScript 中的静态变量 hp
-        }
+      
     }
 
     void HpBar()
     {
        
-        if(health.HP<=0||boss.hp<=0)
-        {
-
-            F.enabled = false;
-            M.enabled = false;
-            B.enabled = false;
-        }
+      
         // 确保 BossScript.hp 不超过范围
         F.fillAmount = Mathf.Clamp01(Boss1Test.hp / 50f); // 假设最大 HP 是 50
 
@@ -72,16 +70,25 @@ public class BossFight : MonoBehaviour
 
         M.fillAmount = endFill;
     }
-
-private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-       if(collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
+        {
+            F.enabled = false;
+            M.enabled = false;
+            B.enabled = false;
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        
+       if(collision.gameObject.CompareTag("Player")&&bossbody!=null)
         {
             F.enabled =true;
             M.enabled = true;
             B.enabled = true;
             GameObject[] existingEnergy = GameObject.FindGameObjectsWithTag("energy");
-            if (existingEnergy.Length < 1)
+            if (existingEnergy.Length < 1&&Boss1Test.hp>5)
             {
                 switch (randomnum)
                 {
@@ -99,7 +106,8 @@ private void OnTriggerStay2D(Collider2D collision)
                         break;
                 }
             }
+
         }
-        
+   
         }
 }
