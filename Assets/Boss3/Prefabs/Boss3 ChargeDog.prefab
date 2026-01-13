@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 1013193615396704432}
   - component: {fileID: 440053746455533}
   - component: {fileID: 1004773777169498867}
+  - component: {fileID: 8345954876539883506}
   m_Layer: 0
   m_Name: Boss3 ChargeDog
   m_TagString: enemy
@@ -131,8 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc97a16f84997424c8390f0a21111823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 0}
-  OwnHP: 50
   RayPosition: {fileID: 6519487271098075591}
   OneDog: {fileID: 4820977505103132611, guid: 043d951ca9a1fec4d9c40a55309d6528, type: 3}
   ThreeDog: {fileID: 2517586154920874924, guid: 6ccb4a9f33d89ce4db511448409e8cd1, type: 3}
@@ -141,6 +140,7 @@ MonoBehaviour:
   isOneDogAlice: 1
   isThreeDogAlive: 1
   howManyDogDied: 0
+  animator: {fileID: 8345954876539883506}
   pushForce: 1
   pushUpwardForce: 1
   RayPos: {fileID: 5718466416020783829}
@@ -216,3 +216,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &8345954876539883506
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682406606951262065}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 666bbc451391d234ab05a23439b9d50d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

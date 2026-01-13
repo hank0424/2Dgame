@@ -38,6 +38,7 @@ public class money : MonoBehaviour
             skill_list.attack = true;
             skill_list.magic = true;
             Chara2.fireupdate = true;
+            skill_list.dash = true;
         }
         w1.text = ":"+money1;
         b1.text = ":" + money1;

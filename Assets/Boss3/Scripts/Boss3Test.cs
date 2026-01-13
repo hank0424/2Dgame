@@ -7,7 +7,8 @@ public class Boss3Test : MonoBehaviour
     [Header("Basic")]
     private Animator animator;
     private Rigidbody2D rb;
-    public static int hp = 80;
+    public static int bosshp = 200;
+    public static int hp = 200;
     public float fireDetectRange = 4f;
     public float chargeDetectRange = 6f;
     public Transform firePoint;
@@ -36,6 +37,7 @@ public class Boss3Test : MonoBehaviour
         if(hp<=0)
         {
             clear = true;
+       
         }
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         CheckCrashWall();
@@ -145,7 +147,7 @@ public class Boss3Test : MonoBehaviour
     {
         isAttacking = true;
         Quaternion originalRotation = firePoint.rotation;
-        int bulletCount = 10;
+        int bulletCount = 7;
         for (int i = 0; i < bulletCount; i++)
         {
             Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

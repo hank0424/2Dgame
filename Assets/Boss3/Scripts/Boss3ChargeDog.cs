@@ -5,8 +5,8 @@ using UnityEngine;
 public class Boss3ChargeDog : MonoBehaviour
 {
     [Header("Basic")]
-    public HPSharing manager;
-    public int OwnHP = 50;
+   // public HPSharing manager;
+    public static int OwnHP = 70;
     public Transform RayPosition;
     public GameObject OneDog;
     public GameObject ThreeDog;
@@ -15,7 +15,7 @@ public class Boss3ChargeDog : MonoBehaviour
     public bool isOneDogAlice = true;
     public bool isThreeDogAlive = true;
     public int howManyDogDied = 0;
-    private Animator animator;
+    public Animator animator;
     private Rigidbody2D rb;
 
     [Header("Player Push Settings")]
@@ -25,15 +25,29 @@ public class Boss3ChargeDog : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         rb = GetComponent<Rigidbody2D>();
-        manager = GameObject.Find("Boss3 Stage2 HP Sharing Gamemager").GetComponent<HPSharing>();
+       // manager = GameObject.Find("Boss3 Stage2 HP Sharing Gamemager").GetComponent<HPSharing>();
 
 
+    }
+    IEnumerator ResetHitAnimation()
+    {
+        animator.SetBool("hit", true);
+
+        yield return new WaitForSeconds(0.05f);
+
+
+        animator.SetBool("hit", false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (boss3area.start2 == false)
+        {
+            Destroy(this.gameObject);
+        }
         OneDog = GameObject.Find("Boss3 ShootDog(Clone)");
         ThreeDog = GameObject.Find("Boss3 ScopeDog(Clone)");
         if (isOneDogAlice == true && OneDog == null)
@@ -68,26 +82,29 @@ public class Boss3ChargeDog : MonoBehaviour
             Debug.Log("Player take damge");
             rb.velocity = Vector2.zero;
             PushPlayerAway(collision.gameObject);
-            OwnHP -= Chara2.magic;
-            StartCoroutine(BossCrashCooldown());
+          
+
         }
-    }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("bullet"))
+        if (collision.gameObject.CompareTag("bullet"))
         {
+            StartCoroutine(ResetHitAnimation());
             OwnHP -= Chara2.magic;
-            manager.TakeDamage(Chara2.magic);
-            Destroy(other.gameObject);
+            // manager.TakeDamage(Chara2.magic);
+            Destroy(collision.gameObject);
             if (OwnHP <= 0)
             {
                 Die();
             }
         }
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        
         if (other.gameObject.CompareTag("atk"))
         {
+            StartCoroutine(ResetHitAnimation());
             OwnHP -= Chara2.atk;
-            manager.TakeDamage(Chara2.atk);
+         //   manager.TakeDamage(Chara2.atk);
           
             if (OwnHP <= 0)
             {

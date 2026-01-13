@@ -6,8 +6,8 @@ using System.Linq;
 public class Boss3ScopeDog : MonoBehaviour
 {
     [Header("Basic")]
-    public HPSharing manager;
-    public int OwnHP = 30;
+    //public HPSharing manager;
+    public static int OwnHP = 70;
     public Transform firePos;
     public Transform WaringAreaPos;
     public Transform[] TeleportPos;
@@ -18,7 +18,7 @@ public class Boss3ScopeDog : MonoBehaviour
     public bool isTwoDogAlive = true;
     public int howManyDogDied = 0;
     private Rigidbody2D rb;
-
+    public Animator animator;
     [Header("Prefabs")]
     public GameObject BulletPrefab;
     public GameObject WaringAreaPrefab;
@@ -26,15 +26,19 @@ public class Boss3ScopeDog : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        manager = GameObject.Find("Boss3 Stage2 HP Sharing Gamemager").GetComponent<HPSharing>();
+       // manager = GameObject.Find("Boss3 Stage2 HP Sharing Gamemager").GetComponent<HPSharing>();
         TP();
-
+       
         TeleportPos = GameObject.FindGameObjectsWithTag("boss3tp")
                         .Select(o => o.transform).ToArray();
     }
 
     void Update()
     {
+        if (boss3area.start2== false)
+        {
+            Destroy(this.gameObject);
+        }
         OneDog = GameObject.Find("Boss3 ShootDog(Clone)");
         TwoDog = GameObject.Find("Boss3 ChargeDog(Clone)");
         if (isOneDogAlice == true && OneDog == null)
@@ -62,8 +66,9 @@ public class Boss3ScopeDog : MonoBehaviour
     {
         if (other.gameObject.CompareTag("bullet"))
         {
+            StartCoroutine(ResetHitAnimation());
             OwnHP -= Chara2.magic;
-            manager.TakeDamage(Chara2.magic);
+            //manager.TakeDamage(Chara2.magic);
             Destroy(other.gameObject);
             TP();
             if (OwnHP <= 0)
@@ -74,14 +79,23 @@ public class Boss3ScopeDog : MonoBehaviour
         if (other.gameObject.CompareTag("atk"))
         {
             OwnHP -= Chara2.atk;
-            manager.TakeDamage(Chara2.atk);
-           
+            //manager.TakeDamage(Chara2.atk);
+            StartCoroutine(ResetHitAnimation());
             TP();
             if (OwnHP <= 0)
             {
                 Die();
             }
         }
+    }
+    IEnumerator ResetHitAnimation()
+    {
+        animator.SetBool("hit", true);
+
+        yield return new WaitForSeconds(0.05f);
+
+
+        animator.SetBool("hit", false);
     }
     public void Die()
     {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss1Test : MonoBehaviour
 {
     private Animator animator;
+    public static int bosshp = 50;
     public static int hp = 50;
     public Transform firePoint;
     public float bulletSpeed;

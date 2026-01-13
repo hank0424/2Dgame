@@ -7,7 +7,8 @@ public class Boss2 : MonoBehaviour
     [Header("Basic")]
     private Animator animator;
     private Rigidbody2D rb;
-    public static float hp = 50;
+    public static float bosshp = 150;
+    public static float hp = 150;
     public Transform firePoint;
     public float bulletSpeed;
     public bool isTwoStage = false;
@@ -45,14 +46,7 @@ public class Boss2 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            PushPlayerAway(collision.gameObject);
-            hp -= Chara2.magic;
-            Vector3 down = new Vector3(0, -0.5f, 0);
-            GameObject show = Instantiate(showDmgPrefab, (this.transform.position + down) + Vector3.up * 1f, Quaternion.identity);
-            show.GetComponent<ShowDmg>().SetDamage(Chara2.magic);
-        }
+      
         if (collision.gameObject.CompareTag("bullet"))
         {
             Vector3 down = new Vector3(0, -0.5f, 0);

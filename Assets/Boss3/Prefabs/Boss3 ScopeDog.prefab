@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 4318588589209451578}
   - component: {fileID: 5703418111043411796}
   - component: {fileID: 2075866244778056022}
+  - component: {fileID: 7793529176622454106}
   m_Layer: 0
   m_Name: Boss3 ScopeDog
   m_TagString: enemy
@@ -132,8 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7eef207dd0e194fb98c0d0848690ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 0}
-  OwnHP: 30
   firePos: {fileID: 526838485472427929}
   WaringAreaPos: {fileID: 2605077970927489526}
   TeleportPos: []
@@ -143,6 +142,7 @@ MonoBehaviour:
   isOneDogAlice: 1
   isTwoDogAlive: 1
   howManyDogDied: 0
+  animator: {fileID: 7793529176622454106}
   BulletPrefab: {fileID: 2639675157065871527, guid: 77b38245191b7df48b6cda357edd256c, type: 3}
   WaringAreaPrefab: {fileID: 1975641174896055942, guid: 14cb79a82b0473e479c187a9d16dc137, type: 3}
 --- !u!61 &5703418111043411796
@@ -217,6 +217,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &7793529176622454106
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2517586154920874924}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31e63f16083493f4e95fb1ad92236256, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3827506840950027865
 GameObject:
   m_ObjectHideFlags: 0

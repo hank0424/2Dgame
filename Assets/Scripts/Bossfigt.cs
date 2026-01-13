@@ -74,6 +74,7 @@ public class BossFight : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Boss1Test.hp = Boss1Test.bosshp;
             F.enabled = false;
             M.enabled = false;
             B.enabled = false;

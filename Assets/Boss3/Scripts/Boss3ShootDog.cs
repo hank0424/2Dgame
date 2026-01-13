@@ -6,8 +6,8 @@ using UnityEngine;
 public class Boss3ShootDog : MonoBehaviour
 {
     [Header("Basic")]
-    public HPSharing manager;
-    public int OwnHP = 30;
+    //public HPSharing manager;
+    public static int OwnHP = 70;
     public int hitNumber = 0;
     public Transform firePos;
     public Transform[] TeleportPos;
@@ -18,7 +18,7 @@ public class Boss3ShootDog : MonoBehaviour
     public bool isThreeDogAlive = true;
     public int howManyDogDied = 0;
     private Rigidbody2D rb;
-
+    public Animator animator;
     [Header("Prefabs")]
     public GameObject BulletPrefab;
 
@@ -26,8 +26,8 @@ public class Boss3ShootDog : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        
-        manager = GameObject.Find("Boss3 Stage2 HP Sharing Gamemager").GetComponent<HPSharing>();
+      
+        //manager = GameObject.Find("Boss3 Stage2 HP Sharing Gamemager").GetComponent<HPSharing>();
 
       
         TeleportPos = GameObject.FindGameObjectsWithTag("boss3tp")
@@ -36,10 +36,21 @@ public class Boss3ShootDog : MonoBehaviour
 
         TP();
     }
+    IEnumerator ResetHitAnimation()
+    {
+        animator.SetBool("hit", true);
 
+        yield return new WaitForSeconds(0.05f);
+
+
+        animator.SetBool("hit", false);
+    }
     void Update()
     {
-        
+        if (boss3area.start2== false)
+        {
+            Destroy(this.gameObject);
+        }
         TwoDog = GameObject.Find("Boss3 ChargeDog(Clone)");
         ThreeDog = GameObject.Find("Boss3 ScopeDog(Clone)");
 
@@ -70,9 +81,10 @@ public class Boss3ShootDog : MonoBehaviour
         {
             hitNumber += 1;
             OwnHP -= Chara2.magic;
-            manager.TakeDamage(Chara2.magic);
+            StartCoroutine(ResetHitAnimation());
+            // manager.TakeDamage(Chara2.magic);
             Destroy(other.gameObject);
-
+            animator.SetTrigger("hit");
             if (hitNumber > 2)
                 TP();
 
@@ -83,8 +95,10 @@ public class Boss3ShootDog : MonoBehaviour
         if (other.gameObject.CompareTag("atk"))
         {
             hitNumber += 1;
+            animator.SetTrigger("hit");
+            StartCoroutine(ResetHitAnimation());
             OwnHP -= Chara2.atk;
-            manager.TakeDamage(Chara2.atk);
+          //  manager.TakeDamage(Chara2.atk);
 
             if (hitNumber > 2)
                 TP();

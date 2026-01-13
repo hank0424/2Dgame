@@ -51,6 +51,7 @@ public class Chara2 : MonoBehaviour
         atkbox.enabled = !atkbox.enabled;
         TestAddItem = FindObjectOfType<TestAddItem>();
         InventoryManager = FindObjectOfType<InventoryManager>();
+        TestAddItem.PickUpItem(2);
     }
      void OnTriggerEnter2D(Collider2D collision)
     {
@@ -133,34 +134,41 @@ public class Chara2 : MonoBehaviour
             this.gameObject.transform.position = new Vector3(-21.19f, -4.68f, 0);
             health.HP = health.maxHp;
             Player.isTrigger = false;
-            death = false;
+            death = false; TestAddItem.PickUpItem(2);
         }
         if (health.HP <= 0 && SpawnPT.spawn_active == 1)
         {
             this.gameObject.transform.position = new Vector3(12.5100002f, -25.9899998f, 0);
             health.HP = health.maxHp;
             Player.isTrigger = false;
-            death = false;
+            death = false; TestAddItem.PickUpItem(2);
         }
         if (health.HP <= 0 && SpawnPT.spawn_active == 2)
         {
             this.gameObject.transform.position = new Vector3(39.92f, -26.62f, 0);
             health.HP = health.maxHp;
             Player.isTrigger = false;
-            death = false;
+            death = false; TestAddItem.PickUpItem(2);
         }
         if (health.HP <= 0 && SpawnPT.spawn_active == 3)
         {
             this.gameObject.transform.position = new Vector3(74.655f, 27.988f, 0);
             health.HP = health.maxHp;
             Player.isTrigger = false;
-            death = false;
+            death = false; TestAddItem.PickUpItem(2);
         }
         if (health.HP <= 0 && SpawnPT.spawn_active == 4)
         {
             this.gameObject.transform.position = new Vector3(104.24f, 40.5f, 0);
             health.HP = health.maxHp;
             Player.isTrigger = false;
+            death = false; TestAddItem.PickUpItem(2);
+        }
+        if (health.HP <= 0 && SpawnPT.spawn_active == 5)
+        {
+            this.gameObject.transform.position = new Vector3(42.26f, 27.12f, 0);
+            health.HP = health.maxHp;
+            Player.isTrigger = false; TestAddItem.PickUpItem(2);
             death = false;
         }
         lastXPosition = Mathf.Lerp(lastXPosition, transform.localPosition.x, 0.3f);

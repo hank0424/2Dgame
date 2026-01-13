@@ -115,19 +115,22 @@ public class TestAddItem : MonoBehaviour
             if (inventoryManager.GetItemCount(PickUpWhatItems[15]) >= skill_atk )
             {
                 inventoryManager.ConsumeItem(PickUpWhatItems[15], 1);
-                PickUpItem(16);
+                d = true;
+                Invoke("change", 0.1f);
                 Debug.Log("技能產生變化成功");
             }
             if (inventoryManager.GetItemCount(PickUpWhatItems[19]) >= skill_magic )
             {
                 inventoryManager.ConsumeItem(PickUpWhatItems[19], 1);
-                PickUpItem(20);
+                e = true;
+                Invoke("change", 0.1f);
                 Debug.Log("技能產生變化成功");
             }
             if (inventoryManager.GetItemCount(PickUpWhatItems[22]) >= skill_sheild )
             {
                 inventoryManager.ConsumeItem(PickUpWhatItems[22], 1);
-                PickUpItem(23);
+                f = true;
+                Invoke("change", 0.1f);
                 Debug.Log("技能產生變化成功");
             }
 

@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 2501202157286589934}
   m_Layer: 0
   m_Name: boss3
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,8 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279557eb09aecbb439efac3750d425c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireDetectRange: 4
-  chargeDetectRange: 6.5
+  fireDetectRange: 4.1
+  chargeDetectRange: 8
   firePoint: {fileID: 5935625295469162452}
   bulletSpeed: 0.5
   isTwoStage: 0
@@ -264,10 +264,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6992698378201204229}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: 0.9063079, w: -0.42261827}
+  m_LocalRotation: {x: 0, y: -0, z: 0.9396927, w: -0.3420201}
   m_LocalPosition: {x: -0.352, y: 0.093, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1401246191666487023}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 230}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 220}

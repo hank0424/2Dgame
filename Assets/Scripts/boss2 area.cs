@@ -33,7 +33,7 @@ public class boss2area : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
+            Boss2.hp = Boss2.bosshp;
             Destroy(bossspawn);
             DestroySlimeLayerObjects();
             start = false;
@@ -55,7 +55,10 @@ public class boss2area : MonoBehaviour
         {
             unlock.SetActive(true);
             animator.SetBool("IsOpened", true);
-
+            Destroy(this.gameObject);
+            Destroy(f);
+            Destroy(m);
+            Destroy(b);
         }
     }
     void hpbar()
@@ -67,7 +70,7 @@ public class boss2area : MonoBehaviour
             m.enabled = false;
             b.enabled = false;
         }
-            f.fillAmount = Mathf.Clamp01(Boss2.hp / 50f); 
+            f.fillAmount = Mathf.Clamp01(Boss2.hp / 150f); 
 
             if (update != null)
             {

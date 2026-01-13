@@ -32,6 +32,7 @@ public class chest5 : MonoBehaviour
                 case 4:
                     isopen = true;
                     testAddItem.PickUpItem(10);//Å®Î×è€³×
+                    witch_house.key =true;
                     break;
                 case 5:
                     isopen = true;
@@ -61,6 +62,10 @@ public class chest5 : MonoBehaviour
                 case 11:
                     isopen = true;
                     skill_list.attack = true;
+                    break;
+                case 12:
+                    isopen = true;
+                    money.money1 += 500;
                     break;
             }
 
