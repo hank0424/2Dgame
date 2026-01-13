@@ -38,7 +38,7 @@ public class ESC : MonoBehaviour
        
         text.SetActive(false);
         ui.SetActive(false);
-        button.SetActive(false);
+        
         isObjectHidden = true;
     }
 

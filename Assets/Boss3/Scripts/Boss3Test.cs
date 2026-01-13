@@ -7,8 +7,8 @@ public class Boss3Test : MonoBehaviour
     [Header("Basic")]
     private Animator animator;
     private Rigidbody2D rb;
-    public static int bosshp = 200;
-    public static int hp = 200;
+    public static float bosshp = 200f;
+    public static float hp = 200f;
     public float fireDetectRange = 4f;
     public float chargeDetectRange = 6f;
     public Transform firePoint;
@@ -92,6 +92,15 @@ public class Boss3Test : MonoBehaviour
             }
             if (hp <= 0)
             {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                if (player != null)
+                {
+                    Collider2D col = player.GetComponent<Collider2D>();
+                    if (col != null)
+                    {
+                        col.isTrigger = false;
+                    }
+                }
                 isTwoStage = true;
                 foreach (var prefab in TwoStageDogPrefab)
                     Instantiate(prefab, RayPos.transform.position, Quaternion.identity);
@@ -117,6 +126,15 @@ public class Boss3Test : MonoBehaviour
             }
             if (hp <= 0)
             {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                if (player != null)
+                {
+                    Collider2D col = player.GetComponent<Collider2D>();
+                    if (col != null)
+                    {
+                        col.isTrigger = false;
+                    }
+                }
                 isTwoStage = true;
                 foreach (var prefab in TwoStageDogPrefab)
                     Instantiate(prefab, RayPos.transform.position, Quaternion.identity);

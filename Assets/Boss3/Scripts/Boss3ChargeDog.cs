@@ -93,6 +93,15 @@ public class Boss3ChargeDog : MonoBehaviour
             Destroy(collision.gameObject);
             if (OwnHP <= 0)
             {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                if (player != null)
+                {
+                    Collider2D col = player.GetComponent<Collider2D>();
+                    if (col != null)
+                    {
+                        col.isTrigger = false;
+                    }
+                }
                 Die();
             }
         }
@@ -109,6 +118,15 @@ public class Boss3ChargeDog : MonoBehaviour
             if (OwnHP <= 0)
             {
                 Die();
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                if (player != null)
+                {
+                    Collider2D col = player.GetComponent<Collider2D>();
+                    if (col != null)
+                    {
+                        col.isTrigger = false;
+                    }
+                }
             }
         }
     }

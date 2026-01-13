@@ -111,7 +111,7 @@ public class Chara2 : MonoBehaviour
     }
     void heal()
     {
-        if (Input.GetKeyDown(KeyCode.G) && health.HP != health.maxHp)
+        if (Input.GetKeyDown(KeyCode.G) && health.HP != health.maxHp&& InventoryManager.GetItemCount(TestAddItem.healing)>=1)
         {
             InventoryManager.ConsumeItem(TestAddItem.healing, 1);
             health.HP = health.maxHp;

@@ -74,16 +74,15 @@ public class Boss3ShootDog : MonoBehaviour
                 StartCoroutine(FireAttack(player));
         }
     }
-
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.gameObject.CompareTag("bullet"))
+        if (collision.gameObject.CompareTag("bullet"))
         {
             hitNumber += 1;
             OwnHP -= Chara2.magic;
             StartCoroutine(ResetHitAnimation());
             // manager.TakeDamage(Chara2.magic);
-            Destroy(other.gameObject);
+            Destroy(collision.gameObject);
             animator.SetTrigger("hit");
             if (hitNumber > 2)
                 TP();
@@ -91,6 +90,11 @@ public class Boss3ShootDog : MonoBehaviour
             if (OwnHP <= 0)
                 Die();
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
 
         if (other.gameObject.CompareTag("atk"))
         {
@@ -161,15 +165,15 @@ public class Boss3ShootDog : MonoBehaviour
             foreach (float offset in angleOffsets)
                 Instantiate(BulletPrefab, firePos.position, Quaternion.Euler(0f, 0f, angle + offset));
 
-            yield return new WaitForSeconds(3.5f);
+            yield return new WaitForSeconds(5f);
         }
         else if (howManyDogDied == 2)
         {
-            float[] angleOffsets = { 0f, 5f, 10f, 15f, 20f, -5f, -10f, -15f, -20f };
+            float[] angleOffsets = { 0f, 5f, 10f, 15f, 20f, -5f, -10f, -20f, -25 };
             foreach (float offset in angleOffsets)
                 Instantiate(BulletPrefab, firePos.position, Quaternion.Euler(0f, 0f, angle + offset));
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(5f);
         }
 
         isAttacking = false;

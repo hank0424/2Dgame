@@ -345,19 +345,19 @@ public class commodity : MonoBehaviour
         switch (name.text)
         {
             case "ÉúÆ¡¾Æ":
-                if (money.money1 >= 100 && str_potion >= 1)
+                if (money.money1 >= 150 && str_potion >= 1)
                 {
                     str_potion -= 1;
-                    money.money1 -= 100;
+                    money.money1 -= 150;
                     Chara2.atk += 1;
                 }
                 break;
 
             case "Ã·Âå¼t¾Æ":
-                if (money.money1 >= 100 && mana_potion >= 1)
+                if (money.money1 >= 250 && mana_potion >= 1)
                 {
                     mana_potion -= 1;
-                    money.money1 -= 100;
+                    money.money1 -= 250;
                     Chara2.magic += 1;
                     health.maxMana += 1f;
                     health.m1 += 0.125f;
@@ -431,9 +431,9 @@ public class commodity : MonoBehaviour
                 }
                 break;
             case "¼Ó±¶™C•þ":
-                if (money.money1 >= 50 && inventoryManager.CanAddItem(testAddItem.PickUpWhatItems[14]) && skill_list.atkC == false)
+                if (money.money1 >= 100 && inventoryManager.CanAddItem(testAddItem.PickUpWhatItems[14]) && skill_list.atkC == false)
                 {
-                    money.money1 -= 50;
+                    money.money1 -= 100;
                     skill_list.atkC = true;
                 }
                 break;
@@ -445,16 +445,16 @@ public class commodity : MonoBehaviour
                 }
                 break;
             case "Ä§Á¦ÆÁÕÏ":
-                if (money.money1 >= 50 && inventoryManager.CanAddItem(testAddItem.PickUpWhatItems[14]) && skill_list.shield == false)
+                if (money.money1 >= 100 && inventoryManager.CanAddItem(testAddItem.PickUpWhatItems[14]) && skill_list.shield == false)
                 {
-                    money.money1 -= 50;
+                    money.money1 -= 100;
                     skill_list.shield = true;
                 }
                 break;
             case "¿ÕÖÐÐn´Ì":
-                if (money.money1 >= 50 && inventoryManager.CanAddItem(testAddItem.PickUpWhatItems[14]) && skill_list.dash == false)
+                if (money.money1 >= 100 && inventoryManager.CanAddItem(testAddItem.PickUpWhatItems[14]) && skill_list.dash == false)
                 {
-                    money.money1 -= 50;
+                    money.money1 -= 100;
                     skill_list.dash = true;
                 }
                 break;

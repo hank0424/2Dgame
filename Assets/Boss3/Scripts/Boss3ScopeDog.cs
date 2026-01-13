@@ -61,21 +61,24 @@ public class Boss3ScopeDog : MonoBehaviour
             }
         }
     }
-
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.gameObject.CompareTag("bullet"))
+        if (collision.gameObject.CompareTag("bullet"))
         {
             StartCoroutine(ResetHitAnimation());
             OwnHP -= Chara2.magic;
             //manager.TakeDamage(Chara2.magic);
-            Destroy(other.gameObject);
+            Destroy(collision.gameObject);
             TP();
             if (OwnHP <= 0)
             {
                 Die();
             }
         }
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+      
         if (other.gameObject.CompareTag("atk"))
         {
             OwnHP -= Chara2.atk;

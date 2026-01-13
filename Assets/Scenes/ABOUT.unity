@@ -1248,8 +1248,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\u88FD\u4F5C:111153152 \u9673\u5F65\u78A9\u3001111153166 \u66FE\u5FD7\u9418\n\u501F\u7269\u8868(\u7D20\u6750):\n\nSunny
+    m_LineSpacing: 0.9
+  m_Text: "\u88FD\u4F5C:\n\n111153152 \u9673\u5F65\u78A9\u3001111153166 \u66FE\u5FD7\u9418\n\n\u6307\u5C0E\u8001\u5E2B:\n\n\u90ED\u9F8D\n\n\u501F\u7269\u8868(\u7D20\u6750):\n\nSunny
     Land\nPixel Art Platformer-Village Backround\nWraped Shooting Fx\n2D-Basic-Room-Assets\nFree
     8-Bit Pixel Pack\nPainted HQ 2D Forest Medieval Backround\nMinecraft\nraven fantasy
     icons\n\n\n\n"

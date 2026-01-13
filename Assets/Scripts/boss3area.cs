@@ -137,7 +137,7 @@ public class boss3area : MonoBehaviour
     // -------------------------
     void hpbar()
     {
-        f.fillAmount = Mathf.Clamp01(Boss3Test.hp / 200);
+        f.fillAmount = Mathf.Clamp01(Boss3Test.hp /200f);
 
         if (stage1)
         {
