@@ -37,9 +37,13 @@ public class money : MonoBehaviour
         {
             skill_list.attack = true;
             skill_list.magic = true;
-            Chara2.fireupdate = true;
-            skill_list.dash = true;
+           
         }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            Chara2.fireupdate = true;
+        }
+        
         w1.text = ":"+money1;
         b1.text = ":" + money1;
 

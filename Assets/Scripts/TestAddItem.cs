@@ -79,7 +79,7 @@ public class TestAddItem : MonoBehaviour
             int skill_atk = 1;
             int skill_magic = 1;
             int skill_sheild = 1;
-            int skill_dash= 1;
+            
             if (inventoryManager.GetItemCount(PickUpWhatItems[14]) >= skill_atk)
             {      
                 inventoryManager.ConsumeItem(PickUpWhatItems[14], 1);

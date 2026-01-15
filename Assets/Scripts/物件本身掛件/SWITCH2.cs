@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SWITCH2 : MonoBehaviour
 {
-    public GameObject destory;
+    public GameObject gm;
     
     public int num=0;
     private Animator a1;
@@ -23,7 +23,7 @@ public class SWITCH2 : MonoBehaviour
                 {
                     a1.SetBool("IsOn", true);
 
-                    destory.SetActive(false);
+                    Destroy(gm);
                 }
                 break;
             case 1:
@@ -31,7 +31,7 @@ public class SWITCH2 : MonoBehaviour
                 {
                     a1.SetBool("IsOn", true);
 
-                    destory.SetActive(false);
+                    Destroy(gm);
                 }
                 break;
             case 2:
@@ -39,7 +39,7 @@ public class SWITCH2 : MonoBehaviour
                 {
                     a1.SetBool("IsOn", true);
 
-                    destory.SetActive(false);
+                    Destroy(gm);
                 }
                 break;
         }

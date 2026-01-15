@@ -24,7 +24,7 @@ public class TP_Stone : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.E) && !stone_active.activeSelf)
+        if (Input.GetKeyDown(KeyCode.E) && !stone_active.activeSelf && collision.CompareTag("Player"))
         {     
             stone_active.SetActive(true);
             switch (number)

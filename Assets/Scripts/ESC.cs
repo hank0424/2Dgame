@@ -5,7 +5,7 @@ using UnityEngine;
 public class ESC : MonoBehaviour
 {
        public GameObject text;
-       public GameObject button;
+      
     public GameObject ui;
     private bool isObjectHidden;
     // Start is called before the first frame update
@@ -47,7 +47,7 @@ public class ESC : MonoBehaviour
       
        text.SetActive(true);
         ui.SetActive(true);
-        button.SetActive(true);
+       
         isObjectHidden = false;
     }
 }

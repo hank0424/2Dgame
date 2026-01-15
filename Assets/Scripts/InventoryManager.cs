@@ -280,27 +280,27 @@ public class InventoryManager : MonoBehaviour
         switch (backpackLevel)
         {
             case 0:
-                materialNum = 1;
+                materialNum = 0;
                 itemNum = 0;
                 skillNum = 0;
                 break;
             case 1:
                 materialNum = 1;
-                itemNum = 0;
-                skillNum = 0;
+                itemNum = 1;
+                skillNum = 1;
                 break;
             case 2:
-                materialNum = 2;
+                materialNum = 1;
                 itemNum = 1;
                 skillNum = 1;
                 break;
             case 3:
-                materialNum = 2;
+                materialNum = 1;
                 itemNum = 1;
                 skillNum = 1;
                 break;
             case 4:
-                materialNum = 2;
+                materialNum = 1;
                 itemNum = 1;
                 skillNum = 1;
                 break;
