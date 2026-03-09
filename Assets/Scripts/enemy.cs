@@ -134,7 +134,7 @@ public class Enemy : MonoBehaviour
                 objbox.enabled = false;
                 Destroy(box);
                 Destroy(this.gameObject,0.5f);
-                money.money1 += 50;
+                money.money1 += 30;
                 switch (type)
                 {
                     case 0:

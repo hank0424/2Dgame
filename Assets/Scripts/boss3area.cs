@@ -74,6 +74,10 @@ public class boss3area : MonoBehaviour
             if (f2 != null && f2.fillAmount <= 0) HideBar(f2, m2, b2);
             if (f3 != null && f3.fillAmount <= 0) HideBar(f3, m3, b3);
         }
+        if(Boss3ShootDog.OwnHP<=0&&Boss3ScopeDog.OwnHP<=0 && Boss3ChargeDog.OwnHP<=0 &&stage1==true)
+        {
+            SettlementScreen.isClear = true;
+        }
     }
 
     // -------------------------

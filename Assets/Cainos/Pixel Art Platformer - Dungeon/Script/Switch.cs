@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cainos.LucidEditor;
+#if UNITY_EDITOR
 using UnityEditor.SceneManagement;
 using UnityEditor;
-
+#endif
 namespace Cainos.PixelArtPlatformer_Dungeon
 {
     public class Switch : MonoBehaviour

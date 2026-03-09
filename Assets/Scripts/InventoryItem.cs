@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+#if UNITY_EDITOR
 using static UnityEditor.Progress;
-
+#endif
 // InventoryItem: 表示「物品 UI 物件」
 // 繼承 MonoBehaviour 並實作四個事件介面：
 // - IBeginDragHandler: 拖曳開始

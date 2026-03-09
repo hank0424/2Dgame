@@ -134,7 +134,8 @@ public class Chara2 : MonoBehaviour
             this.gameObject.transform.position = new Vector3(-21.19f, -4.68f, 0);
             health.HP = health.maxHp;
             Player.isTrigger = false;
-            if(InventoryManager.GetItemCount(TestAddItem.healing)<1)
+            SettlementScreen.DeadCount += 1;
+            if (InventoryManager.GetItemCount(TestAddItem.healing)<1)
             {
                 TestAddItem.PickUpItem(2);
             }
@@ -145,6 +146,7 @@ public class Chara2 : MonoBehaviour
             this.gameObject.transform.position = new Vector3(12.5100002f, -25.9899998f, 0);
             health.HP = health.maxHp;
             Player.isTrigger = false;
+            SettlementScreen.DeadCount += 1;
             death = false;
             if (InventoryManager.GetItemCount(TestAddItem.healing) < 1)
             {
@@ -156,6 +158,7 @@ public class Chara2 : MonoBehaviour
             this.gameObject.transform.position = new Vector3(39.92f, -26.62f, 0);
             health.HP = health.maxHp;
             Player.isTrigger = false;
+            SettlementScreen.DeadCount += 1;
             death = false; 
                   if (InventoryManager.GetItemCount(TestAddItem.healing) < 1)
             {
@@ -167,6 +170,7 @@ public class Chara2 : MonoBehaviour
             this.gameObject.transform.position = new Vector3(74.655f, 27.988f, 0);
             health.HP = health.maxHp;
             Player.isTrigger = false;
+            SettlementScreen.DeadCount += 1;
             death = false;
             if (InventoryManager.GetItemCount(TestAddItem.healing) < 1)
             {
@@ -178,6 +182,7 @@ public class Chara2 : MonoBehaviour
             this.gameObject.transform.position = new Vector3(104.24f, 40.5f, 0);
             health.HP = health.maxHp;
             Player.isTrigger = false;
+            SettlementScreen.DeadCount += 1;
             death = false;
             if (InventoryManager.GetItemCount(TestAddItem.healing) < 1)
             {
@@ -189,6 +194,7 @@ public class Chara2 : MonoBehaviour
             this.gameObject.transform.position = new Vector3(42.26f, 27.12f, 0);
             health.HP = health.maxHp;
             Player.isTrigger = false;
+            SettlementScreen.DeadCount += 1;
             if (InventoryManager.GetItemCount(TestAddItem.healing) < 1)
             {
                 TestAddItem.PickUpItem(2);

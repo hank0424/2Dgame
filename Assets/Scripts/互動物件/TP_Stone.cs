@@ -66,7 +66,7 @@ public class TP_Stone : MonoBehaviour
     }
     public void under()
     {
-        player.transform.position = new Vector3(40, -26.5f, 0);
+        player.transform.position = new Vector3(43.43f, -27f, 0);
         ui.SetActive(false);
         Cursor.visible = false;
     }
