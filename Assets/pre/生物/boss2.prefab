@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 5413179147859652052}
-  bulletSpeed: 5
+  bulletSpeed: 10
   isTwoStage: 0
   RayPos: {fileID: 9154748071943005207}
   showDmgPrefab: {fileID: 5181830577567718608, guid: bd400b87a2e323b4d893b5409ec983df, type: 3}

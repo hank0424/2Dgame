@@ -13,7 +13,7 @@ public class CLASS : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            player.transform.position = new Vector3(49.1139984f, -2.61599994f, 0);
+            player.transform.position = new Vector3(49.5f, -26.7f, 0);
         }
     }
 }

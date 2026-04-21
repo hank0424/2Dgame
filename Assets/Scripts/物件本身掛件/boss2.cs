@@ -8,7 +8,7 @@ public class Boss2 : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     public static float bosshp = 150;
-    public static float hp = 150;
+    public static float hp = 150 ;
     public Transform firePoint;
     public float bulletSpeed;
     public bool isTwoStage = false;
@@ -270,7 +270,7 @@ public class Boss2 : MonoBehaviour
     {
         while (true)
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
                 yield return new WaitForSeconds(0.5f);
                 NormalAtk();
@@ -278,7 +278,11 @@ public class Boss2 : MonoBehaviour
                 NormalAtk();
                 yield return new WaitForSeconds(0.5f);
                 NormalAtk();
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(0.5f);
+                NormalAtk();
+                yield return new WaitForSeconds(0.5f);
+                NormalAtk();
+                yield return new WaitForSeconds(2f);
             }
             SkllAtk();
             yield return new WaitForSeconds(7.5f);

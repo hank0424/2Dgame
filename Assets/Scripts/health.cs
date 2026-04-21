@@ -40,10 +40,10 @@ public class health : MonoBehaviour
         }
 
         // 測試按鍵：L 減血，K 加血
-        if (Input.GetKeyDown(KeyCode.L))
-            HP -= 1;
-        if (Input.GetKeyDown(KeyCode.K))
-            HP += 1;
+        //if (Input.GetKeyDown(KeyCode.L))
+          //  HP -= 1;
+        //if (Input.GetKeyDown(KeyCode.K))
+           // HP += 1;
 
         UpdateUI();
 
