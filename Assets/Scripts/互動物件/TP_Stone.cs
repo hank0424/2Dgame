@@ -1,84 +1,90 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TP_Stone : MonoBehaviour
 {
     public GameObject stone_active;
     public GameObject ui;
     public GameObject player;
-    public int number=0;
+    public int number = 0;
 
-    public static bool plain=false;
-    public static bool cave= false;
+    private bool playerInRange = false;
+
+    public static bool plain = false;
+    public static bool cave = false;
     public static bool villiage = false;
-    public static bool dungeon= false;
-    public static bool dungeon2= false;
-    // Start is called before the first frame update
+    public static bool dungeon = false;
+    public static bool dungeon2 = false;
+
     void Start()
     {
         stone_active.SetActive(false);
         ui.SetActive(false);
-
     }
-    private void OnTriggerStay2D(Collider2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.E) && !stone_active.activeSelf && collision.CompareTag("Player"))
-        {     
-            stone_active.SetActive(true);
-            switch (number)
+        if (collision.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
+    }
+
+    void Update()
+    {
+        if (!playerInRange) return;
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (!stone_active.activeSelf)
             {
-                case 1:
-                    TP_stone_unlock.num = 1;
-                    break;
-                case 2:
-                    TP_stone_unlock.num = 2;
-                    break;
-                case 3:
-                    TP_stone_unlock.num = 3;
-                    break;
-                case 4:
-                    TP_stone_unlock.num = 4;
-                    break;
-                case 5:
-                    TP_stone_unlock.num = 5;
-                    break;
+                stone_active.SetActive(true);
+
+                switch (number)
+                {
+                    case 1: TP_stone_unlock.num = 1; break;
+                    case 2: TP_stone_unlock.num = 2; break;
+                    case 3: TP_stone_unlock.num = 3; break;
+                    case 4: TP_stone_unlock.num = 4; break;
+                    case 5: TP_stone_unlock.num = 5; break;
+                }
+            }
+            else
+            {
+                ui.SetActive(true);
+                Cursor.visible = true;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.E) && stone_active.activeSelf)
-        {
-            ui.SetActive(true);
-            Cursor.visible =true;
-        }
-
     }
+
     public void cancel()
     {
         ui.SetActive(false);
         Cursor.visible = false;
     }
+
     public void village()
     {
         player.transform.position = new Vector3(-27, 25.5f, 0);
-        ui.SetActive(false);
-        Cursor.visible = false;
+        cancel();
     }
+
     public void under()
     {
         player.transform.position = new Vector3(43.43f, -27f, 0);
-        ui.SetActive(false);
-        Cursor.visible = false;
+        cancel();
     }
+
     public void home()
     {
         player.transform.position = new Vector3(-20.47f, -4.12f, 0);
-        ui.SetActive(false);
-        Cursor.visible = false;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        cancel();
     }
 }

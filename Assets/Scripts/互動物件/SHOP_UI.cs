@@ -1,47 +1,60 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
 
 public class SHOP_UI : MonoBehaviour
 {
-    
-    
     public GameObject ShopUI;
-    
 
-    private void Start()
+    private bool playerInRange = false;
+
+    void Start()
     {
         ShopUI.SetActive(false);
         Cursor.visible = false;
     }
-    private void OnTriggerStay2D(Collider2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (collision.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
+    }
+
+    void Update()
+    {
+        if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
             ShopUI.SetActive(true);
             Cursor.visible = true;
         }
     }
+
     public void exit()
     {
-        {
-            ShopUI.SetActive(false);
-            Cursor.visible = false;
-        }
+        ShopUI.SetActive(false);
+        Cursor.visible = false;
     }
+
     public void Nextpage()
     {
-       ShopUI.SetActive(true);
+        ShopUI.SetActive(true);
     }
+
     public void closepage()
     {
         ShopUI.SetActive(false);
     }
+
     public void buy()
     {
-       
-    }
 
+    }
 }

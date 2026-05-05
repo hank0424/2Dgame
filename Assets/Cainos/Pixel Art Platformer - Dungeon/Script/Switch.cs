@@ -11,6 +11,8 @@ namespace Cainos.PixelArtPlatformer_Dungeon
     public class Switch : MonoBehaviour
     {
         public GameObject TGdoor;
+        private bool playerInRange = false;
+
         private Collider2D COLdoor;
         public GameObject obj;
         [FoldoutGroup("Reference")] public Door target;
@@ -35,15 +37,31 @@ namespace Cainos.PixelArtPlatformer_Dungeon
             IsOn = isOn;
             COLdoor = TGdoor.GetComponent<Collider2D>();
         }
-        private void OnTriggerStay2D(Collider2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            if (collision.CompareTag("Player"))
+            {
+                playerInRange = true;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                playerInRange = false;
+            }
+        }
+        private void Update()
+        {
+            if (playerInRange && Input.GetKeyDown(KeyCode.E))
             {
                 TurnOn();
                 COLdoor.enabled = false;
                 Destroy(obj);
             }
         }
+
 
         [FoldoutGroup("Runtime"), ShowInInspector]
         public bool IsOn
