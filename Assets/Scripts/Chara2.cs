@@ -239,7 +239,7 @@ public class Chara2 : MonoBehaviour
     }
     void sheild()
     {
-        if(Input.GetKeyDown(KeyCode.F)&&health.mana>0&&skill_list.isshield==false&&skill_list.shield==true)
+        if(Input.GetKeyDown(KeyCode.F)&&health.mana>=2&&skill_list.isshield==false&&skill_list.shield==true)
         {
             health.mana-=2;
             animator5.SetBool("shield",true);

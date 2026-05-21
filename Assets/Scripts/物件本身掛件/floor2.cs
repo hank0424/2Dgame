@@ -1,17 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class floor2 : MonoBehaviour
 {
     public GameObject chara;
-    // Start is called before the first frame update
-    private void OnTriggerStay2D(Collider2D collision)
+
+    private bool playerInRange = false;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if (collision.CompareTag("Player"))
         {
-            chara.transform.position = new Vector3(103f,40.4f,0);
-           
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        {
+            chara.transform.position = new Vector3(103f, 40.4f, 0);
         }
     }
 }
